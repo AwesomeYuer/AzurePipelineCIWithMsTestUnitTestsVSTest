@@ -15,7 +15,7 @@
                 ShimClass1.AllInstances.HelloStringString = (sender, whom, whom2) =>
                 {
                     i++;
-                    var r = $"Shim Good Bye {whom},{whom2}";
+                    var r = $"Shim Good Bye {whom}, {whom2}";
                     Console.WriteLine(r);
                     return r;
                 };
@@ -33,7 +33,7 @@
             { 
                  HelloStringString = (whom, whom2) =>
                  {
-                     var r = $"Stub Good Bye {whom},{whom2}";
+                     var r = $"Stub Good Bye {whom}, {whom2}";
                      Console.WriteLine(r);
                      return r;
                  }
