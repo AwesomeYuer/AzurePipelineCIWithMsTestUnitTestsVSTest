@@ -68,4 +68,3 @@ steps:
   inputs:
     PathtoPublish: '$(build.artifactstagingdirectory)'
   condition: succeededOrFailed()
-
