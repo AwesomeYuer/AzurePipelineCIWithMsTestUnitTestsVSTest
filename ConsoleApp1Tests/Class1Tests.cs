@@ -29,7 +29,7 @@
         public void HelloTest2()
         {
             //Fakes stubClass1 = new Fakes.StubClass1();
-            StubIHello stubIHello = new StubIHello()
+            var stubIHello = new StubIHello()
             { 
                  HelloStringString = (whom, whom2) =>
                  {
