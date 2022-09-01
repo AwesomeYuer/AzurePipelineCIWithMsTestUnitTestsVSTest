@@ -1,5 +1,26 @@
-# AzPipelineTest CI
+# Azure Pipeline CI with UnitTests VSTest CI
 
-[![Build Status](https://microshaoft.visualstudio.com/AzPipelineTest-Github/_apis/build/status/AzPipelineTest-Github-ASP.NET%20Core-CI?branchName=master)](https://microshaoft.visualstudio.com/AzPipelineTest-Github/_build/latest?definitionId=26&branchName=master)
+1. msbuild: 
+```
+Project:
+    **/*.sln
+```
+2. vstest:
+```
+Test files:
+    **\*tests.dll
+    !**\*TestAdapter.dll
+    !**\obj\**
+```
+3. publish: 
+```
+X publish web projects
 
-[![Build Status](https://microshaoft.visualstudio.com/AzPipelineTest-Github/_apis/build/status/AzPipelineTest-Github-ASP.NET%20Core-CI-02?branchName=master)](https://microshaoft.visualstudio.com/AzPipelineTest-Github/_build/latest?definitionId=28&branchName=master)
+Path to project(s):
+    **/*.csproj
+    !**/*Tests.csproj
+```
+
+[![Build Status](https://microshaoft.visualstudio.com/AzurePipelines/_apis/build/status/AzurePipelineCIwithUnitTestsVSTest-Classic-CI-Github?branchName=master)](https://microshaoft.visualstudio.com/AzurePipelines/_build/latest?definitionId=34&branchName=master)
+
+[![Build Status](https://microshaoft.visualstudio.com/AzurePipelines/_apis/build/status/AzurePipelineCIwithUnitTestsVSTest-yml-CI-Github?branchName=master)](https://microshaoft.visualstudio.com/AzurePipelines/_build/latest?definitionId=30&branchName=master)
