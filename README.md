@@ -1,24 +1,34 @@
 # Azure Pipeline CI with UnitTests VSTest CI
 
-1. msbuild: 
+## Classic Mode Options
+1. Build solution **/*.sln (MSBuild):
 ```
 Project:
     **/*.sln
 ```
-2. vstest:
+
+2. Build (.NET Core):
+```
+Path to project(s):
+    **/*.csproj
+    !**/*[Tt]ests.csproj
+```
+
+3. VsTest - testAssemblies (Visual Studio Test):
 ```
 Test files:
-    **\*tests.dll
+    **\*[Tt]ests.dll
     !**\*TestAdapter.dll
     !**\obj\**
 ```
-3. publish: 
+
+4. Publish (.NET Core):
 ```
 X publish web projects
 
 Path to project(s):
     **/*.csproj
-    !**/*Tests.csproj
+    !**/*[Tt]ests.csproj
 ```
 
 # AzurePipelineCIwithUnitTestsVSTest-Classic-CI-Github
