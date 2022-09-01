@@ -9,7 +9,7 @@
     {
         public string Hello(string whom, string whom2) 
         {
-            var r = $"Hello:{whom}{whom2}";
+            var r = $"Hello: {whom}, {whom2}";
             Console.WriteLine(r);
             return r;
         }  
