@@ -21,6 +21,9 @@ Path to project(s):
     !**/*Tests.csproj
 ```
 
+# AzurePipelineCIwithUnitTestsVSTest-Classic-CI-Github
 [![Build Status](https://microshaoft.visualstudio.com/AzurePipelines/_apis/build/status/AzurePipelineCIwithUnitTestsVSTest-Classic-CI-Github?branchName=master)](https://microshaoft.visualstudio.com/AzurePipelines/_build/latest?definitionId=34&branchName=master)
 
+
+# AzurePipelineCIwithUnitTestsVSTest-yml-CI-Github
 [![Build Status](https://microshaoft.visualstudio.com/AzurePipelines/_apis/build/status/AzurePipelineCIwithUnitTestsVSTest-yml-CI-Github?branchName=master)](https://microshaoft.visualstudio.com/AzurePipelines/_build/latest?definitionId=30&branchName=master)
