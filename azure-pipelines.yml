@@ -20,11 +20,20 @@ parameters:
     default: '**/*.csproj'
 
 steps:
+# - task: DotNetCoreCLI@2
+#   displayName: Restore
+#   inputs:
+#     command: restore
+#     projects: '$(Parameters.RestoreBuildProjects)'
+
 - task: DotNetCoreCLI@2
-  displayName: Restore
+  displayName: Restore Packages
   inputs:
-    command: restore
-    projects: '$(Parameters.RestoreBuildProjects)'
+      command: restore
+      # feedsToUse: config
+      # nugetConfigPath: 'nuget.config'
+      projects: '**/*.csproj'
+      noCache: true
 
 - task: NuGetToolInstaller@1
 
