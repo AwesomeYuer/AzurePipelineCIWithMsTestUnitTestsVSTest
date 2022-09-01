@@ -1,17 +1,29 @@
-﻿
-
-namespace ConsoleApp1
+﻿namespace ConsoleApp1
 {
     using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
-    public class Class1
+    public interface IHello
     {
-        public void Hello(string whom)
+        string Hello(string whom, string whom2);
+    }
+    public class Class1 : IHello
+    {
+        public string Hello(string whom, string whom2) 
         {
-            Console.WriteLine($"Hello:{whom}"); 
+            var r = $"Hello:{whom}{whom2}";
+            Console.WriteLine(r);
+            return r;
         }  
+    }
+    public class Analyzer
+    {
+        private IHello _hello;
+        public Analyzer(IHello hello)
+        {
+            _hello = hello;
+        }
+        public string Invoke(string whom, string whom2)
+        {
+            return _hello.Hello(whom, whom2);
+        }
     }
 }
