@@ -38,7 +38,7 @@
                      return r;
                  }
             };
-            Analyzer a = new (stubIHello);
+            Invoker a = new (stubIHello);
             var r = a.Invoke("world", "world2");
             Assert.IsTrue(r.StartsWith("stub", StringComparison.OrdinalIgnoreCase));
         }

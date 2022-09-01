@@ -14,10 +14,10 @@
             return r;
         }  
     }
-    public class Analyzer
+    public class Invoker
     {
-        private IHello _hello;
-        public Analyzer(IHello hello)
+        private readonly IHello _hello;
+        public Invoker(IHello hello)
         {
             _hello = hello;
         }
