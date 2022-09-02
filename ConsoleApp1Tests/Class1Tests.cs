@@ -44,37 +44,40 @@
             Assert.IsTrue(r.StartsWith("stub", StringComparison.OrdinalIgnoreCase));
         }
 
-        [DataRow(typeof(ArgumentNullException))]
+        [DataRow(typeof(DivideByZeroException), $"Message of {nameof(DivideByZeroException)}")]
+        [DataRow(typeof(DivideByZeroException), "")]
+        [DataRow(typeof(DivideByZeroException), null)]
         //[DataRow(typeof(DivideByZeroException))]
         //[DataRow(typeof(Exception))]
         [TestMethod()]
-        public void ExceptionTest(Type type)
+        public void ExceptionTest(Type expectedExceptionType, string expectedExceptionMessage = null!)
         {
-            var expectedMessage = $"Message:{nameof(DivideByZeroException)}";
             AssertHelper
                     .Throws
                         (
-                            type
+                            expectedExceptionType
                             , () =>
                             {
-                                throw new ArgumentNullException(expectedMessage, new Exception());
+                                throw new DivideByZeroException(expectedExceptionMessage, new Exception());
                             }
-                            , expectedMessage
+                            , expectedExceptionMessage
                         );
         }
-        
+
+        [DataRow($"Message of {nameof(ArgumentNullException)}")]
+        [DataRow("")]
+        [DataRow(null)]
         [TestMethod()]
-        public void ExceptionTest2()
+        public void ExceptionTest2(string expectedExceptionMessage = null!)
         {
-            var expectedMessage = $"Message:{nameof(DivideByZeroException)}";
             AssertHelper
-                    .Throws<DivideByZeroException>
+                    .Throws<ArgumentNullException>
                         (
                             () =>
                             {
-                                throw new DivideByZeroException(expectedMessage);
+                                throw new ArgumentNullException(expectedExceptionMessage, new Exception());
                             }
-                            , expectedMessage
+                            , expectedExceptionMessage
                         );
         }
     }

@@ -6,20 +6,20 @@
         public static void Throws<TExpectedException>
                                         (
                                             Action action
-                                            , string expectedMessage = null!
+                                            , string expectedExceptionMessage = null!
                                         )
                                                 where TExpectedException : Exception
         {
-            void processExpectedMessage(Exception exception)
+            void processExpectedExceptionMessage(Exception exception)
             {
-                if (!string.IsNullOrEmpty(expectedMessage))
+                if (!string.IsNullOrEmpty(expectedExceptionMessage))
                 {
                     Assert
                         .AreEqual
                             (
-                                expectedMessage
+                                expectedExceptionMessage
                                 , exception.Message
-                                , $"Expected exception with a message of '{expectedMessage}' but exception with message of '{exception.Message}' was thrown instead."
+                                , $"Expected exception with a message of '{expectedExceptionMessage}' but exception with message of '{exception.Message}' was thrown instead."
                             );
                 }
             }
@@ -34,7 +34,7 @@
                         (
                             expectedException.GetType() == typeof(TExpectedException)
                         );
-                processExpectedMessage(expectedException);
+                processExpectedExceptionMessage(expectedException);
                 return;
             }
             catch (Exception exception)
@@ -44,7 +44,7 @@
                         (
                             $"Expected exception of type {typeof(TExpectedException)} but type of {exception.GetType()} was thrown instead."
                         );
-                processExpectedMessage(exception);
+                processExpectedExceptionMessage(exception);
                 return;
             }
             Assert
@@ -58,20 +58,20 @@
                                 (
                                     Type expectedExceptionType
                                     , Action action
-                                    , string expectedMessage = null!
+                                    , string expectedExceptionMessage = null!
                                 )
 
         {
-            void processExpectedMessage(Exception exception)
+            void processExpectedExceptionMessage(Exception exception)
             {
-                if (!string.IsNullOrEmpty(expectedMessage))
+                if (!string.IsNullOrEmpty(expectedExceptionMessage))
                 {
                     Assert
                         .AreEqual
                             (
-                                expectedMessage
+                                expectedExceptionMessage
                                 , exception.Message
-                                , $"Expected exception with a message of '{expectedMessage}' but exception with message of '{exception.Message}' was thrown instead."
+                                , $"Expected exception with a message of '{expectedExceptionMessage}' but exception with message of '{exception.Message}' was thrown instead."
                             );
                 }
             }
@@ -87,7 +87,7 @@
                             exception.GetType() == expectedExceptionType
                             , $"Expected exception of type {expectedExceptionType} but type of {exception.GetType()} was thrown instead."
                         );
-                processExpectedMessage(exception);
+                processExpectedExceptionMessage(exception);
                 return;
             }
             Assert
