@@ -22,7 +22,15 @@
                 };
                 var c1 = new Class1();
                 var r = c1.Hello("world", "world2");
-                Assert.IsTrue(r.StartsWith("shim", StringComparison.OrdinalIgnoreCase));
+                Assert
+                    .IsTrue
+                        (
+                            r.StartsWith
+                                    (
+                                        "shim"
+                                        , StringComparison.OrdinalIgnoreCase
+                                    )
+                        );
             }
         }
 
@@ -41,7 +49,15 @@
             };
             Invoker invoker = new (stubIHello);
             var r = invoker.Invoke("world", "world2");
-            Assert.IsTrue(r.StartsWith("stub", StringComparison.OrdinalIgnoreCase));
+            Assert
+                .IsTrue
+                    (
+                        r.StartsWith
+                                (
+                                    "stub"
+                                    , StringComparison.OrdinalIgnoreCase
+                                )
+                    );
         }
 
         [DataRow(typeof(DivideByZeroException), $"Message of {nameof(DivideByZeroException)}")]
