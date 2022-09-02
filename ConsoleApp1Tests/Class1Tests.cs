@@ -1,5 +1,6 @@
 ﻿namespace ConsoleApp1.Tests
 {
+    using ChinaCPPMigTransLayer.MSTest.UnitTests;
     using ConsoleApp1.Fakes;
     using Microsoft.QualityTools.Testing.Fakes;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -41,6 +42,36 @@
             Invoker a = new (stubIHello);
             var r = a.Invoke("world", "world2");
             Assert.IsTrue(r.StartsWith("stub", StringComparison.OrdinalIgnoreCase));
+        }
+
+        [DataRow(typeof(ArgumentNullException))]
+        //[DataRow(typeof(DivideByZeroException))]
+        //[DataRow(typeof(Exception))]
+        [TestMethod()]
+        public void ExceptionTest(Type type)
+        {
+            AssertHelper
+                    .Throws
+                        (
+                            type
+                            , () =>
+                            {
+                                throw new ArgumentNullException();
+                            }
+                        );
+        }
+        
+        [TestMethod()]
+        public void ExceptionTest2()
+        {
+            AssertHelper
+                    .Throws<DivideByZeroException>
+                        (
+                            () =>
+                            {
+                                throw new DivideByZeroException();
+                            }
+                        );
         }
     }
 }

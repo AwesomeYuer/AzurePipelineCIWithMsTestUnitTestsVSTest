@@ -53,5 +53,49 @@
                         $"Expected exception of type {typeof(TExpectedException)} but no exception was thrown."
                     );
         }
+
+
+        public static void Throws
+                                (
+                                    Type expectedExceptionType
+                                    , Action action
+                                    , string expectedMessage = null!
+                                )
+    
+        {
+            void process(Exception exception)
+            {
+                if (!string.IsNullOrEmpty(expectedMessage))
+                {
+                    Assert
+                        .AreEqual
+                            (
+                                expectedMessage
+                                , exception.Message
+                                , $"Expected exception with a message of '{expectedMessage}' but exception with message of '{exception.Message}' was thrown instead."
+                            );
+                }
+            }
+            try
+            {
+                action();
+            }
+            catch (Exception exception)
+            {
+                Assert
+                    .IsTrue
+                        (
+                            exception.GetType() == expectedExceptionType
+                            , $"Expected exception of type {expectedExceptionType} but type of {exception.GetType()} was thrown instead."
+                        );
+                process(exception);
+                return;
+            }
+            Assert
+                .Fail
+                    (
+                        $"Expected exception of type {expectedExceptionType} but no exception was thrown."
+                    );
+        }
     }
 }
