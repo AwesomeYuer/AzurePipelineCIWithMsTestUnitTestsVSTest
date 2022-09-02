@@ -39,8 +39,8 @@
                      return r;
                  }
             };
-            Invoker a = new (stubIHello);
-            var r = a.Invoke("world", "world2");
+            Invoker invoker = new (stubIHello);
+            var r = invoker.Invoke("world", "world2");
             Assert.IsTrue(r.StartsWith("stub", StringComparison.OrdinalIgnoreCase));
         }
 
