@@ -53,7 +53,7 @@
                     (
                         r.StartsWith
                                 (
-                                    "stub"
+                                    "Stub"
                                     , StringComparison.OrdinalIgnoreCase
                                 )
                     );
