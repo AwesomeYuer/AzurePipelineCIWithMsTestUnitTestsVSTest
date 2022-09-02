@@ -10,7 +10,7 @@
                                         )
                                                 where TExpectedException : Exception
         {
-            void process(Exception exception)
+            void processExpectedMessage(Exception exception)
             {
                 if (!string.IsNullOrEmpty(expectedMessage))
                 {
@@ -34,7 +34,7 @@
                         (
                             expectedException.GetType() == typeof(TExpectedException)
                         );
-                process(expectedException);
+                processExpectedMessage(expectedException);
                 return;
             }
             catch (Exception exception)
@@ -44,7 +44,7 @@
                         (
                             $"Expected exception of type {typeof(TExpectedException)} but type of {exception.GetType()} was thrown instead."
                         );
-                process(exception);
+                processExpectedMessage(exception);
                 return;
             }
             Assert
@@ -54,16 +54,15 @@
                     );
         }
 
-
         public static void Throws
                                 (
                                     Type expectedExceptionType
                                     , Action action
                                     , string expectedMessage = null!
                                 )
-    
+
         {
-            void process(Exception exception)
+            void processExpectedMessage(Exception exception)
             {
                 if (!string.IsNullOrEmpty(expectedMessage))
                 {
@@ -88,7 +87,7 @@
                             exception.GetType() == expectedExceptionType
                             , $"Expected exception of type {expectedExceptionType} but type of {exception.GetType()} was thrown instead."
                         );
-                process(exception);
+                processExpectedMessage(exception);
                 return;
             }
             Assert
