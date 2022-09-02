@@ -1,10 +1,12 @@
-# Azure Pipeline CI with UnitTests VSTest CI
+# Azure Pipeline CI With MsTest UnitTests VSTest CI
 
 ## Classic Mode Options
 1. Build solution **/*.sln (MSBuild):
 ```
 Project:
     **/*.sln
+MSBuild Architecture:
+    MSBuild x64
 ```
 
 2. Build (.NET Core):
@@ -31,9 +33,9 @@ Path to project(s):
     !**/*[Tt]ests.csproj
 ```
 
-# AzurePipelineCIwithUnitTestsVSTest-Classic-CI-Github
-[![Build Status](https://microshaoft.visualstudio.com/AzurePipelines/_apis/build/status/AzurePipelineCIwithUnitTestsVSTest-Classic-CI-Github?branchName=master)](https://microshaoft.visualstudio.com/AzurePipelines/_build/latest?definitionId=34&branchName=master)
+# Azure Pipeline CI With MsTest Unit Tests VSTest-Github-ASP.NET Core-CI-Classic Mode
+[![Build Status](https://microshaoft.visualstudio.com/AzurePipelines/_apis/build/status/AzurePipelineCIWithMsTestUnitTestsVSTest-ASP.NETCore-CI-Classic-Mode?branchName=master)](https://microshaoft.visualstudio.com/AzurePipelines/_build/latest?definitionId=35&branchName=master)
 
 
-# AzurePipelineCIwithUnitTestsVSTest-yml-CI-Github
-[![Build Status](https://microshaoft.visualstudio.com/AzurePipelines/_apis/build/status/AzurePipelineCIwithUnitTestsVSTest-yml-CI-Github?branchName=master)](https://microshaoft.visualstudio.com/AzurePipelines/_build/latest?definitionId=30&branchName=master)
+# Azure Pipeline CI With MsTest Unit Tests VSTest-Github-ASP.NET Core-CI-Yaml Mode
+[![Build Status](https://microshaoft.visualstudio.com/AzurePipelines/_apis/build/status/AzurePipelineCIWithMsTestUnitTestsVSTest-ASP.NETCore-CI-Yaml-Mode?branchName=master)](https://microshaoft.visualstudio.com/AzurePipelines/_build/latest?definitionId=36&branchName=master)
