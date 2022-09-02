@@ -11,7 +11,14 @@ namespace ChinaCPPMigTransLayer.MSTest.UnitTests
                                             , string expectedExceptionMessage = null!
                                         )
         {
-            if (!string.IsNullOrEmpty(expectedExceptionMessage))
+            if
+                (
+                    !string
+                        .IsNullOrEmpty
+                                (
+                                    expectedExceptionMessage
+                                )
+                )
             {
                 Assert
                     .AreEqual
@@ -40,7 +47,10 @@ namespace ChinaCPPMigTransLayer.MSTest.UnitTests
                 Assert
                     .IsTrue
                         (
-                            expectedException.GetType() == typeof(TExpectedException)
+                            expectedException
+                                            .GetType()
+                            ==
+                            typeof(TExpectedException)
                         );
                 processExpectedExceptionMessage
                                         (
@@ -87,7 +97,10 @@ namespace ChinaCPPMigTransLayer.MSTest.UnitTests
                 Assert
                     .IsTrue
                         (
-                            exception.GetType() == expectedExceptionType
+                            exception
+                                    .GetType()
+                            ==
+                            expectedExceptionType
                             , $@"Expected exception of type ""{expectedExceptionType}"" but type of ""{exception.GetType()}"" was thrown instead."
                         );
                 processExpectedExceptionMessage
