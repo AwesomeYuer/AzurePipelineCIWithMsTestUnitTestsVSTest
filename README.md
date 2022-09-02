@@ -5,6 +5,7 @@
 ```
 Project:
     **/*.sln
+
 MSBuild Architecture:
     MSBuild x64
 ```
