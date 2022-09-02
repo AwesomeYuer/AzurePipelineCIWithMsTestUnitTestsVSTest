@@ -22,12 +22,13 @@ namespace ChinaCPPMigTransLayer.MSTest.UnitTests
                         );
             }
         }
-        public static void Throws<TExpectedException>
-                                        (
-                                            Action action
-                                            , string expectedExceptionMessage = null!
-                                        )
-                                                where TExpectedException : Exception
+        public static void Throws
+                                <TExpectedException>
+                                    (
+                                        Action action
+                                        , string expectedExceptionMessage = null!
+                                    )
+                                        where TExpectedException : Exception
         {
 
             try
