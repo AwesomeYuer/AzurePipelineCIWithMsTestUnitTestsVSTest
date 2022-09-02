@@ -50,27 +50,31 @@
         [TestMethod()]
         public void ExceptionTest(Type type)
         {
+            var expectedMessage = $"Message:{nameof(DivideByZeroException)}";
             AssertHelper
                     .Throws
                         (
                             type
                             , () =>
                             {
-                                throw new ArgumentNullException();
+                                throw new ArgumentNullException(expectedMessage, new Exception());
                             }
+                            , expectedMessage
                         );
         }
         
         [TestMethod()]
         public void ExceptionTest2()
         {
+            var expectedMessage = $"Message:{nameof(DivideByZeroException)}";
             AssertHelper
                     .Throws<DivideByZeroException>
                         (
                             () =>
                             {
-                                throw new DivideByZeroException();
+                                throw new DivideByZeroException(expectedMessage);
                             }
+                            , expectedMessage
                         );
         }
     }
