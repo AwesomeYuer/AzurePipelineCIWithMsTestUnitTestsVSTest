@@ -1,6 +1,6 @@
 ﻿#define MsTestUnitTests
 #if MsTestUnitTests
-namespace ChinaCPPMigTransLayer.MSTest.UnitTests
+namespace Microshaoft.UnitTesting.MsTest
 {
     using Microsoft.VisualStudio.TestTools.UnitTesting;
     public static class AssertHelper
