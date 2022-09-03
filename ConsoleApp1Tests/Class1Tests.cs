@@ -13,13 +13,16 @@
             using (ShimsContext.Create())
             {
                 var i = 0;
-                ShimClass1.AllInstances.HelloStringString = (sender, whom, whom2) =>
-                {
-                    i++;
-                    var r = $"Shim Good Bye {whom}, {whom2}";
-                    Console.WriteLine(r);
-                    return r;
-                };
+                ShimClass1
+                        .AllInstances
+                        .HelloStringString =
+                                (sender, whom, whom2) =>
+                                {
+                                    i++;
+                                    var r = $"Shim Good Bye {whom}, {whom2}";
+                                    Console.WriteLine(r);
+                                    return r;
+                                };
                 var c1 = new Class1();
                 var r = c1.Hello("world", "world2");
                 Assert
@@ -40,12 +43,13 @@
             //Fakes stubClass1 = new Fakes.StubClass1();
             var stubIHello = new StubIHello()
             { 
-                 HelloStringString = (whom, whom2) =>
-                 {
-                     var r = $"Stub Good Bye {whom}, {whom2}";
-                     Console.WriteLine(r);
-                     return r;
-                 }
+                 HelloStringString =
+                    (whom, whom2) =>
+                    {
+                        var r = $"Stub Good Bye {whom}, {whom2}";
+                        Console.WriteLine(r);
+                        return r;
+                    }
             };
             Invoker invoker = new (stubIHello);
             var r = invoker.Invoke("world", "world2");
@@ -66,7 +70,11 @@
         //[DataRow(typeof(DivideByZeroException))]
         //[DataRow(typeof(Exception))]
         [TestMethod()]
-        public void ExceptionTest(Type expectedExceptionType, string expectedExceptionMessage = null!)
+        public void ExceptionTest
+                            (
+                                Type expectedExceptionType
+                                , string expectedExceptionMessage = null!
+                            )
         {
             AssertHelper
                     .Throws
@@ -74,7 +82,13 @@
                             expectedExceptionType
                             , () =>
                             {
-                                throw new DivideByZeroException(expectedExceptionMessage, new Exception());
+                                throw
+                                    new
+                                        DivideByZeroException
+                                            (
+                                                expectedExceptionMessage
+                                                , new Exception()
+                                            );
                             }
                             , expectedExceptionMessage
                         );
@@ -87,14 +101,21 @@
         public void ExceptionTest2(string expectedExceptionMessage = null!)
         {
             AssertHelper
-                    .Throws<ArgumentNullException>
-                        (
-                            () =>
-                            {
-                                throw new ArgumentNullException(expectedExceptionMessage, new Exception());
-                            }
-                            , expectedExceptionMessage
-                        );
+                    .Throws
+                        <ArgumentNullException>
+                            (
+                                () =>
+                                {
+                                    throw
+                                        new
+                                            ArgumentNullException
+                                                (
+                                                    expectedExceptionMessage
+                                                    , new Exception()
+                                                );
+                                }
+                                , expectedExceptionMessage
+                            );
         }
     }
 }

@@ -3,9 +3,14 @@
     using System;
     public interface IHello
     {
-        string Hello(string whom, string whom2);
+        string Hello
+                (
+                    string whom
+                    , string whom2
+                );
     }
-    public class Class1 : IHello
+    public class Class1
+                        : IHello
     {
         public string Hello(string whom, string whom2) 
         {
