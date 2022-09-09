@@ -3,6 +3,8 @@
 namespace Microshaoft.UnitTesting.MsTest
 {
     using Microsoft.VisualStudio.TestTools.UnitTesting;
+    using System;
+
     public static class AssertHelper
     {
         private static void processExpectedExceptionMessage
@@ -21,10 +23,9 @@ namespace Microshaoft.UnitTesting.MsTest
                 )
             {
                 Assert
-                    .AreEqual
+                    .IsTrue
                         (
-                            expectedExceptionMessage
-                            , exception.Message
+                            string.Compare(expectedExceptionMessage, exception.Message, StringComparison.OrdinalIgnoreCase) == 0
                             , $@"Expected exception with a message of ""{expectedExceptionMessage}"" but exception with message of ""{exception.Message}"" was thrown instead."
                         );
             }
@@ -34,6 +35,7 @@ namespace Microshaoft.UnitTesting.MsTest
                                     (
                                         Action action
                                         , string expectedExceptionMessage = null!
+                                        , bool drillDownInnerExceptions = true
                                     )
                                         where TExpectedException : Exception
         {
@@ -41,6 +43,84 @@ namespace Microshaoft.UnitTesting.MsTest
             try
             {
                 action();
+            }
+            catch (AggregateException aggregateException)
+            {
+                var innerExceptions = aggregateException.Flatten().InnerExceptions;
+                foreach (var e in innerExceptions)
+                {
+                    if
+                        (
+                            e.GetType() == typeof(TExpectedException)
+                            &&
+                            string
+                                .Compare
+                                    (
+                                        expectedExceptionMessage
+                                        , e.Message
+                                        , StringComparison.OrdinalIgnoreCase
+                                    ) == 0
+                        )
+                    {
+                        Assert
+                            .IsTrue
+                                (
+                                    e.GetType()
+                                    ==
+                                    typeof(TExpectedException)
+                                );
+                        processExpectedExceptionMessage
+                                                (
+                                                    e
+                                                    , expectedExceptionMessage
+                                                );
+                        //break;
+                        return;
+                    }
+                    else if
+                        (
+                            drillDownInnerExceptions
+                            &&
+                            e.InnerException != null
+                        )
+                    {
+                        var ee = e.InnerException;
+                        while (ee != null)
+                        {
+                            if
+                                (
+                                    ee.GetType() == typeof(TExpectedException)
+                                    &&
+                                    string
+                                        .Compare
+                                            (
+                                                expectedExceptionMessage
+                                                , ee.Message
+                                                , StringComparison.OrdinalIgnoreCase
+                                            ) == 0
+                                )
+                            {
+                                Assert
+                                    .IsTrue
+                                        (
+                                            ee.GetType()
+                                            ==
+                                            typeof(TExpectedException)
+                                        );
+                                processExpectedExceptionMessage
+                                                        (
+                                                            ee
+                                                            , expectedExceptionMessage
+                                                        );
+                                return;
+                            }
+                            else
+                            {
+                                ee = ee.InnerException;
+                            }
+                        }
+                    }
+                }
             }
             catch (TExpectedException expectedException)
             {
@@ -71,6 +151,7 @@ namespace Microshaoft.UnitTesting.MsTest
                                             exception
                                             , expectedExceptionMessage
                                         );
+
                 return;
             }
             Assert
@@ -85,12 +166,85 @@ namespace Microshaoft.UnitTesting.MsTest
                                     Type expectedExceptionType
                                     , Action action
                                     , string expectedExceptionMessage = null!
+                                    , bool drillDownInnerExceptions = true
                                 )
 
         {
             try
             {
                 action();
+            }
+            catch (AggregateException aggregateException)
+            {
+                var innerExceptions = aggregateException.Flatten().InnerExceptions;
+                foreach (var e in innerExceptions)
+                {
+                    if
+                        (
+                            e.GetType() == expectedExceptionType
+                            &&
+                            string.Compare(expectedExceptionMessage, e.Message, StringComparison.OrdinalIgnoreCase) == 0
+                        )
+                    {
+                        Assert
+                            .IsTrue
+                                (
+                                    e.GetType()
+                                    ==
+                                    expectedExceptionType
+                                );
+                        processExpectedExceptionMessage
+                                                (
+                                                    e
+                                                    , expectedExceptionMessage
+                                                );
+                        //break;
+                        return;
+                    }
+                    else if
+                        (
+                            drillDownInnerExceptions
+                            &&
+                            e.InnerException != null
+                        )
+                    {
+                        var ee = e.InnerException;
+                        while (ee != null)
+                        {
+                            if
+                                (
+                                    ee.GetType() == expectedExceptionType
+                                    &&
+                                    string
+                                        .Compare
+                                            (
+                                                expectedExceptionMessage
+                                                , ee.Message
+                                                , StringComparison.OrdinalIgnoreCase
+                                            ) == 0
+                                )
+                            {
+                                Assert
+                                    .IsTrue
+                                        (
+                                            ee.GetType()
+                                            ==
+                                            expectedExceptionType
+                                        );
+                                processExpectedExceptionMessage
+                                                        (
+                                                            ee
+                                                            , expectedExceptionMessage
+                                                        );
+                                return;
+                            }
+                            else
+                            {
+                                ee = ee.InnerException;
+                            }
+                        }
+                    }
+                }
             }
             catch (Exception exception)
             {
