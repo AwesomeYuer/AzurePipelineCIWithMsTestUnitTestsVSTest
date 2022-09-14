@@ -35,6 +35,7 @@ namespace Microshaoft.UnitTesting.MsTest
                                     (
                                         Action action
                                         , string expectedExceptionMessage = null!
+                                        , Action<TExpectedException> onProcessAction = null!
                                         , bool drillDownInnerExceptions = true
                                     )
                                         where TExpectedException : Exception
@@ -74,6 +75,7 @@ namespace Microshaoft.UnitTesting.MsTest
                                                     e
                                                     , expectedExceptionMessage
                                                 );
+                        onProcessAction?.Invoke((TExpectedException)e);
                         //break;
                         return;
                     }
@@ -112,6 +114,7 @@ namespace Microshaoft.UnitTesting.MsTest
                                                             ee
                                                             , expectedExceptionMessage
                                                         );
+                                onProcessAction?.Invoke((TExpectedException)ee);
                                 return;
                             }
                             else
@@ -137,6 +140,7 @@ namespace Microshaoft.UnitTesting.MsTest
                                             expectedException
                                             , expectedExceptionMessage
                                         );
+                onProcessAction?.Invoke(expectedException);
                 return;
             }
             catch (Exception exception)
@@ -166,6 +170,7 @@ namespace Microshaoft.UnitTesting.MsTest
                                     Type expectedExceptionType
                                     , Action action
                                     , string expectedExceptionMessage = null!
+                                    , Action<Exception> onProcessAction = null!
                                     , bool drillDownInnerExceptions = true
                                 )
 
@@ -198,6 +203,7 @@ namespace Microshaoft.UnitTesting.MsTest
                                                     e
                                                     , expectedExceptionMessage
                                                 );
+                        onProcessAction?.Invoke(e);
                         //break;
                         return;
                     }
@@ -236,6 +242,7 @@ namespace Microshaoft.UnitTesting.MsTest
                                                             ee
                                                             , expectedExceptionMessage
                                                         );
+                                onProcessAction?.Invoke(e);
                                 return;
                             }
                             else
@@ -262,6 +269,7 @@ namespace Microshaoft.UnitTesting.MsTest
                                             exception
                                             , expectedExceptionMessage
                                         );
+                onProcessAction?.Invoke(exception);
                 return;
             }
             Assert

@@ -91,6 +91,10 @@
                                             );
                             }
                             , expectedExceptionMessage
+                            , (x) =>
+                            {
+                                Assert.IsTrue(x is DivideByZeroException);
+                            }
                         );
         }
 
@@ -115,6 +119,10 @@
                                                 );
                                 }
                                 , expectedExceptionMessage
+                                , (x) =>
+                                {
+                                    Assert.AreEqual(x.GetType(), typeof(ArgumentNullException));
+                                }
                             );
         }
     }
