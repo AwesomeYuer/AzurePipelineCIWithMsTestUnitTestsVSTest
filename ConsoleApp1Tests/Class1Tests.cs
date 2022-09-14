@@ -94,6 +94,7 @@
                             , (x) =>
                             {
                                 Assert.IsTrue(x is DivideByZeroException);
+                                Assert.AreEqual(x.GetType(), typeof(DivideByZeroException));
                             }
                         );
         }
@@ -121,6 +122,7 @@
                                 , expectedExceptionMessage
                                 , (x) =>
                                 {
+                                    Assert.IsTrue(x is ArgumentNullException);
                                     Assert.AreEqual(x.GetType(), typeof(ArgumentNullException));
                                 }
                             );
