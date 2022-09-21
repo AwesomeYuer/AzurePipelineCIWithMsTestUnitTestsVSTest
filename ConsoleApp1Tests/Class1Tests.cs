@@ -20,7 +20,7 @@
                                 {
                                     i++;
                                     var r = $"Shim Good Bye {whom}, {whom2}";
-                                    Console.WriteLine(r);
+                                    Console.WriteLine($"Shiming return {r}");
                                     return r;
                                 };
                 var c1 = new Class1();
@@ -47,7 +47,7 @@
                     (whom, whom2) =>
                     {
                         var r = $"Stub Good Bye {whom}, {whom2}";
-                        Console.WriteLine(r);
+                        Console.WriteLine($"Stubing return {r}");
                         return r;
                     }
             };
