@@ -1,7 +1,7 @@
 # Azure Pipeline CI With MsTest UnitTests VSTest CI
 ## Command Line
 ```
-vstest.console.exe ConsoleApp1Tests\bin\Debug\net6.0\ConsoleApp1Tests.dll /logger:"console;verbosity=detailed
+vstest.console.exe ConsoleApp1Tests\bin\Debug\net6.0\ConsoleApp1Tests.dll /logger:"console;verbosity=detailed"
 ```
 
 ## Classic Mode Options
