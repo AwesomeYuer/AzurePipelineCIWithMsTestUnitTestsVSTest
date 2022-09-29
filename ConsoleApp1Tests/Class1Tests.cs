@@ -8,6 +8,34 @@
     public class Class1Tests
     {
         [TestMethod()]
+        public void HelloConstructorTest()
+        {
+            using (ShimsContext.Create())
+            {
+                var i = 0;
+                ShimClass1.ConstructorString = (@this, hello) =>
+                {
+                    //var r = new Class1("nihao");
+                    //new ShimClass1(@this);
+                    //啥也不是!就虚构实例化出来了!
+                };
+                var hello = "你好";
+                var c1 = new Class1(hello);
+                var r = c1.Hello("world", "world2");
+                Assert
+                    .IsTrue
+                        (
+                            r.StartsWith
+                                    (
+                                        hello
+                                        , StringComparison.OrdinalIgnoreCase
+                                    )
+                        );
+            }
+        }
+
+
+       // [TestMethod()]
         public void HelloTest()
         {
             using (ShimsContext.Create())
@@ -23,7 +51,7 @@
                                     Console.WriteLine($"Shiming return {r}");
                                     return r;
                                 };
-                var c1 = new Class1();
+                var c1 = new Class1("你好");
                 var r = c1.Hello("world", "world2");
                 Assert
                     .IsTrue
@@ -37,7 +65,7 @@
             }
         }
 
-        [TestMethod()]
+      //  [TestMethod()]
         public void HelloTest2()
         {
             //Fakes stubClass1 = new Fakes.StubClass1();
@@ -69,7 +97,7 @@
         [DataRow(typeof(DivideByZeroException), null)]
         //[DataRow(typeof(DivideByZeroException))]
         //[DataRow(typeof(Exception))]
-        [TestMethod()]
+        //[TestMethod()]
         public void ExceptionTest
                             (
                                 Type expectedExceptionType
@@ -102,7 +130,7 @@
         [DataRow($"Message of {nameof(ArgumentNullException)}")]
         [DataRow("")]
         [DataRow(null)]
-        [TestMethod()]
+        //[TestMethod()]
         public void ExceptionTest2(string expectedExceptionMessage = null!)
         {
             AssertHelper
