@@ -104,8 +104,7 @@
                                 , string expectedExceptionMessage = null!
                             )
         {
-            Assert
-                    .That
+            AssertHelper
                     .Throws
                         (
                             expectedExceptionType
@@ -115,7 +114,7 @@
                                     new
                                         DivideByZeroException
                                             (
-                                                expectedExceptionMessage
+                                                expectedExceptionMessage + "1111"
                                                 , new Exception()
                                             );
                             }
@@ -134,8 +133,7 @@
         [TestMethod()]
         public void ExceptionTest2(string expectedExceptionMessage = null!)
         {
-            Assert
-                    .That
+            AssertHelper
                     .Throws
                         <ArgumentNullException>
                             (
@@ -157,8 +155,6 @@
                                 }
                             );
         }
-
-
         
         //[DataRow(typeof(DivideByZeroException))]
         //[DataRow(typeof(Exception))]
@@ -167,12 +163,21 @@
         {
             // fail
             Assert
-                .ThrowsException<Exception>
+                .ThrowsException<DivideByZeroException>
                     (
                         () =>
                         { 
-                            var e = new DivideByZeroException("hello");
-                            throw e;
+                            Task
+                                .Run
+                                    (
+                                        ()=>
+                                        {
+                                            var e = new DivideByZeroException("hello");
+                                            throw e;
+                                        }
+                                    )
+                                .Wait();
+                            
                         }
                         , "hello11111"
                     );

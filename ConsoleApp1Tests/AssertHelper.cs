@@ -33,8 +33,7 @@ namespace Microshaoft.UnitTesting.MsTest
         public static void Throws
                                 <TExpectedException>
                                     (
-                                        this Assert @this
-                                        , Action action
+                                        Action action
                                         , string expectedExceptionMessage = null!
                                         , Action<TExpectedException> onProcessAction = null!
                                         , bool drillDownInnerExceptions = true
@@ -168,8 +167,7 @@ namespace Microshaoft.UnitTesting.MsTest
 
         public static void Throws
                                 (
-                                    this Assert @this
-                                    , Type expectedExceptionType
+                                    Type expectedExceptionType
                                     , Action action
                                     , string expectedExceptionMessage = null!
                                     , Action<Exception> onProcessAction = null!
