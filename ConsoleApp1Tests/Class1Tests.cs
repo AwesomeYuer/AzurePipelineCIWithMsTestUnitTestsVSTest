@@ -65,7 +65,7 @@
             }
         }
 
-      //  [TestMethod()]
+        [TestMethod()]
         public void HelloTest2()
         {
             //Fakes stubClass1 = new Fakes.StubClass1();
@@ -97,14 +97,15 @@
         [DataRow(typeof(DivideByZeroException), null)]
         //[DataRow(typeof(DivideByZeroException))]
         //[DataRow(typeof(Exception))]
-        //[TestMethod()]
+        [TestMethod()]
         public void ExceptionTest
                             (
                                 Type expectedExceptionType
                                 , string expectedExceptionMessage = null!
                             )
         {
-            AssertHelper
+            Assert
+                    .That
                     .Throws
                         (
                             expectedExceptionType
@@ -130,10 +131,11 @@
         [DataRow($"Message of {nameof(ArgumentNullException)}")]
         [DataRow("")]
         [DataRow(null)]
-        //[TestMethod()]
+        [TestMethod()]
         public void ExceptionTest2(string expectedExceptionMessage = null!)
         {
-            AssertHelper
+            Assert
+                    .That
                     .Throws
                         <ArgumentNullException>
                             (
@@ -154,6 +156,26 @@
                                     Assert.AreEqual(x.GetType(), typeof(ArgumentNullException));
                                 }
                             );
+        }
+
+
+        
+        //[DataRow(typeof(DivideByZeroException))]
+        //[DataRow(typeof(Exception))]
+        [TestMethod()]
+        public void ExceptionTest3()
+        {
+            // fail
+            Assert
+                .ThrowsException<Exception>
+                    (
+                        () =>
+                        { 
+                            var e = new DivideByZeroException("hello");
+                            throw e;
+                        }
+                        , "hello11111"
+                    );
         }
     }
 }
