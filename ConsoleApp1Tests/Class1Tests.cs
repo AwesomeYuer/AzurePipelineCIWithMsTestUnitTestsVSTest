@@ -13,21 +13,26 @@
             using (ShimsContext.Create())
             {
                 var i = 0;
+                var _hello = "随便";
                 ShimClass1.ConstructorString = (@this, hello) =>
                 {
-                    //var r = new Class1("nihao");
-                    //new ShimClass1(@this);
-                    //啥也不是!就虚构实例化出来了!
+                    i++;
+                    var sC1 = new ShimClass1(@this);
+                    sC1.HelloStringString = (whom, whom2) =>
+                    {
+                        return
+                            $@"{_hello}, {whom}, {whom2}";
+                    };
                 };
-                var hello = "随便";
-                var c1 = new Class1(hello);
+                
+                var c1 = new Class1("爱啥啥");
                 var r = c1.Hello("world", "world2");
                 Assert
                     .IsTrue
                         (
                             r.StartsWith
                                     (
-                                        hello
+                                        _hello
                                         , StringComparison.OrdinalIgnoreCase
                                     )
                         );
