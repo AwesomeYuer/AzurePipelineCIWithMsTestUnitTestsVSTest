@@ -42,7 +42,7 @@
         }
 
 
-       // [TestMethod()]
+        [TestMethod()]
         public void HelloTest()
         {
             using (ShimsContext.Create())
@@ -122,7 +122,7 @@
                                 new
                                     DivideByZeroException
                                         (
-                                            expectedExceptionMessage + "1111"
+                                            expectedExceptionMessage //+ "1111"
                                             , new Exception()
                                         );
                         }
@@ -176,17 +176,16 @@
                     (
                         () =>
                         { 
-                            Task
-                                .Run
-                                    (
-                                        ()=>
-                                        {
+                            //Task
+                            //    .Run
+                            //        (
+                            //            ()=>
+                            //            {
                                             var e = new DivideByZeroException("hello");
                                             throw e;
-                                        }
-                                    )
-                                .Wait();
-                            
+                                //        }
+                                //    )
+                                //.Wait();
                         }
                         , "hello11111"
                     );
