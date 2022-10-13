@@ -104,7 +104,8 @@
                                 , string expectedExceptionMessage = null!
                             )
         {
-            AssertHelper
+            Assert
+                    .That
                     .Throws
                         (
                             expectedExceptionType
@@ -133,7 +134,8 @@
         [TestMethod()]
         public void ExceptionTest2(string expectedExceptionMessage = null!)
         {
-            AssertHelper
+            Assert
+                    .That
                     .Throws
                         <ArgumentNullException>
                             (
