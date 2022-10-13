@@ -4,7 +4,8 @@
     using ConsoleApp1.Fakes;
     using Microsoft.QualityTools.Testing.Fakes;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
-    [TestClass()]
+
+    [TestClass(),TestCategory(nameof(Class1Tests))]
     public class Class1Tests
     {
         [TestMethod()]
