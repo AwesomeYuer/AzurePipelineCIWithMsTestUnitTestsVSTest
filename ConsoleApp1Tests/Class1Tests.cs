@@ -5,7 +5,7 @@
     using Microsoft.QualityTools.Testing.Fakes;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-    [TestClass(),TestCategory(nameof(Class1Tests))]
+    [TestClass(), TestCategory(nameof(Class1Tests))]
     public class Class1Tests
     {
         [TestMethod()]
