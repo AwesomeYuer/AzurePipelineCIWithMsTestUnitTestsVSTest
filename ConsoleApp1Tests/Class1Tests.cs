@@ -19,7 +19,7 @@
                     //new ShimClass1(@this);
                     //啥也不是!就虚构实例化出来了!
                 };
-                var hello = "你好";
+                var hello = "随便";
                 var c1 = new Class1(hello);
                 var r = c1.Hello("world", "world2");
                 Assert
