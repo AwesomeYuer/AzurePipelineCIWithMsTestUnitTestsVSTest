@@ -13,7 +13,7 @@
             using (ShimsContext.Create())
             {
                 var i = 0;
-                var _hello = "随便";
+                var _hello = string.Empty;
                 ShimClass1.ConstructorString = (@this, hello) =>
                 {
                     i++;
@@ -21,12 +21,13 @@
                     sC1.HelloStringString = (whom, whom2) =>
                     {
                         return
-                            $@"{_hello}, {whom}, {whom2}";
+                            $@"{hello}!, {whom2}, {whom}";
                     };
                 };
                 
-                var c1 = new Class1("爱啥啥");
+                var c1 = new Class1("瞅啥");
                 var r = c1.Hello("world", "world2");
+                Console.WriteLine(r);
                 Assert
                     .IsTrue
                         (
