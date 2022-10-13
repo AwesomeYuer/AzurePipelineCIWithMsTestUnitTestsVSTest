@@ -112,27 +112,27 @@
                             )
         {
             Assert
-                    .That
-                    .Throws
-                        (
-                            expectedExceptionType
-                            , () =>
-                            {
-                                throw
-                                    new
-                                        DivideByZeroException
-                                            (
-                                                expectedExceptionMessage + "1111"
-                                                , new Exception()
-                                            );
-                            }
-                            , expectedExceptionMessage
-                            , (x) =>
-                            {
-                                Assert.IsTrue(x is DivideByZeroException);
-                                Assert.AreEqual(x.GetType(), typeof(DivideByZeroException));
-                            }
-                        );
+                .That
+                .Throws
+                    (
+                        expectedExceptionType
+                        , () =>
+                        {
+                            throw
+                                new
+                                    DivideByZeroException
+                                        (
+                                            expectedExceptionMessage + "1111"
+                                            , new Exception()
+                                        );
+                        }
+                        , expectedExceptionMessage
+                        , (x) =>
+                        {
+                            Assert.IsTrue(x is DivideByZeroException);
+                            Assert.AreEqual(x.GetType(), typeof(DivideByZeroException));
+                        }
+                    );
         }
 
         [DataRow($"Message of {nameof(ArgumentNullException)}")]
@@ -142,29 +142,29 @@
         public void ExceptionTest2(string expectedExceptionMessage = null!)
         {
             Assert
-                    .That
-                    .Throws
-                        <ArgumentNullException>
-                            (
-                                () =>
-                                {
-                                    throw
-                                        new
-                                            ArgumentNullException
-                                                (
-                                                    expectedExceptionMessage
-                                                    , new Exception()
-                                                );
-                                }
-                                , expectedExceptionMessage
-                                , (x) =>
-                                {
-                                    Assert.IsTrue(x is ArgumentNullException);
-                                    Assert.AreEqual(x.GetType(), typeof(ArgumentNullException));
-                                }
-                            );
+                .That
+                .Throws
+                    <ArgumentNullException>
+                        (
+                            () =>
+                            {
+                                throw
+                                    new
+                                        ArgumentNullException
+                                            (
+                                                expectedExceptionMessage
+                                                , new Exception()
+                                            );
+                            }
+                            , expectedExceptionMessage
+                            , (x) =>
+                            {
+                                Assert.IsTrue(x is ArgumentNullException);
+                                Assert.AreEqual(x.GetType(), typeof(ArgumentNullException));
+                            }
+                        );
         }
-        
+
         //[DataRow(typeof(DivideByZeroException))]
         //[DataRow(typeof(Exception))]
         [TestMethod()]
