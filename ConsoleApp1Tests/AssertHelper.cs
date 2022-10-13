@@ -25,7 +25,16 @@ namespace Microshaoft.UnitTesting.MsTest
                 Assert
                     .IsTrue
                         (
-                            string.Compare(expectedExceptionMessage, exception.Message, true) == 0
+                            string
+                                .Compare
+                                    (
+                                        expectedExceptionMessage
+                                        , exception
+                                                .Message
+                                        , true
+                                    )
+                            ==
+                            0
                             , $@"Expected exception with a message of ""{expectedExceptionMessage}"" but exception with message of ""{exception.Message}"" was thrown instead."
                         );
             }
@@ -60,7 +69,7 @@ namespace Microshaoft.UnitTesting.MsTest
                                     (
                                         expectedExceptionMessage
                                         , e.Message
-                                        , StringComparison.OrdinalIgnoreCase
+                                        , true
                                     ) == 0
                         )
                     {
@@ -99,7 +108,7 @@ namespace Microshaoft.UnitTesting.MsTest
                                             (
                                                 expectedExceptionMessage
                                                 , ee.Message
-                                                , StringComparison.OrdinalIgnoreCase
+                                                , true
                                             ) == 0
                                 )
                             {
@@ -188,9 +197,20 @@ namespace Microshaoft.UnitTesting.MsTest
                 {
                     if
                         (
-                            e.GetType() == expectedExceptionType
+                            e
+                                .GetType()
+                            ==
+                            expectedExceptionType
                             &&
-                            string.Compare(expectedExceptionMessage, e.Message, true) == 0
+                            string
+                                .Compare
+                                    (
+                                        expectedExceptionMessage
+                                        , e.Message
+                                        , true
+                                    )
+                            ==
+                            0
                         )
                     {
                         Assert
