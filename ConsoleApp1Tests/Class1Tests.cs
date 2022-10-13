@@ -18,11 +18,13 @@
                 ShimClass1.ConstructorString = (@this, hello) =>
                 {
                     i++;
-                    var sC1 = new ShimClass1(@this);
-                    sC1.HelloStringString = (whom, whom2) =>
+                    var sC1 = new ShimClass1(@this)
                     {
-                        return
-                            $@"{hello}!, {whom2}, {whom}";
+                        HelloStringString = (whom, whom2) =>
+                        {
+                            return
+                                $@"{hello}!, {whom2}, {whom}";
+                        }
                     };
                 };
                 
