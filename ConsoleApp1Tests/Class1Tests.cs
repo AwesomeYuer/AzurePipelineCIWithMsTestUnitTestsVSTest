@@ -18,15 +18,16 @@
                 ShimClass1.ConstructorString = (@this, hello) =>
                 {
                     i++;
+                    _hello = hello;
                     var sC1 = new ShimClass1(@this)
                     {
                         HelloStringString = (whom, whom2) =>
                         {
                             return
-                                $@"{hello}!, {whom2}, {whom}";
+                                $@"!{_hello}, {whom2}, {whom}";
                         }
                     };
-                    _hello = hello;
+                    
                 };
                 
                 var c1 = new Class1("瞅啥");
@@ -35,9 +36,10 @@
                 Assert
                     .IsTrue
                         (
-                            r.StartsWith
+                            r
+                                .StartsWith
                                     (
-                                        _hello
+                                        $"!{_hello}"
                                         , StringComparison.OrdinalIgnoreCase
                                     )
                         );
@@ -51,21 +53,22 @@
             {
                 var i = 0;
                 ShimClass1
-                        .AllInstances
-                        .HelloStringString =
-                                (sender, whom, whom2) =>
-                                {
-                                    i++;
-                                    var r = $"Shim Good Bye {whom}, {whom2}";
-                                    Console.WriteLine($"Shiming return {r}");
-                                    return r;
-                                };
+                    .AllInstances
+                    .HelloStringString =
+                        (sender, whom, whom2) =>
+                        {
+                            i++;
+                            var r = $"Shim Good Bye {whom}, {whom2}";
+                            Console.WriteLine($"Shiming return {r}");
+                            return r;
+                        };
                 var c1 = new Class1("你好");
                 var r = c1.Hello("world", "world2");
                 Assert
                     .IsTrue
                         (
-                            r.StartsWith
+                            r
+                                .StartsWith
                                     (
                                         "shim"
                                         , StringComparison.OrdinalIgnoreCase
