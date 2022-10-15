@@ -27,7 +27,6 @@
                                 $@"!{_hello}, {whom2}, {whom}";
                         }
                     };
-                    
                 };
                 
                 var c1 = new Class1("瞅啥");
