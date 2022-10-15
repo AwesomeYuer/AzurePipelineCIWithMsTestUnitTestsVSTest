@@ -26,6 +26,7 @@
                                 $@"{hello}!, {whom2}, {whom}";
                         }
                     };
+                    _hello = hello;
                 };
                 
                 var c1 = new Class1("瞅啥");
@@ -179,14 +180,14 @@
                         { 
                             //Task
                             //    .Run
-                            //        (
-                            //            ()=>
-                            //            {
+                            //      (
+                            //          ()=>
+                            //          {
                                             var e = new DivideByZeroException("hello");
                                             throw e;
-                                //        }
-                                //    )
-                                //.Wait();
+                            //          }
+                            //      )
+                            //  .Wait();
                         }
                         , "hello11111"
                     );
