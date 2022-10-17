@@ -50,7 +50,6 @@ namespace Microshaoft.UnitTesting.MsTest
                                     )
                                         where TExpectedException : Exception
         {
-
             try
             {
                 action();
