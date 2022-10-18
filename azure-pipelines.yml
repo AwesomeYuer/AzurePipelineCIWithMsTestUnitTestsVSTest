@@ -64,28 +64,32 @@ steps:
       !**\*TestAdapter.dll
       !**\obj\**
     searchFolder: '$(System.DefaultWorkingDirectory)'
-    resultsFolder: '$(Build.SourcesDirectory)/artifacts/TestResults/$(_BuildConfig)/Reports/'
-    arguments: '--logger:trx --Collect:"Code Coverage" -- DataCollectionRunSettings.DataCollectors.DataCollector.Configuration.Format="Cobertura"'
-    publishTestResults: true
+    # resultsFolder: '$(Build.SourcesDirectory)/artifacts/TestResults/$(_BuildConfig)/Reports/'
+    arguments: '--logger:trx --ResultsDirectory:"TestResults/Coverage/" --Collect:"Code Coverage" -- DataCollectionRunSettings.DataCollectors.DataCollector.Configuration.Format="Cobertura"'
+    publishTestResults: false
     codeCoverageEnabled: true
 
-- task: PublishTestResults@2
-  inputs:
-    testRunner: VSTest
-    # testResultsFormat: 'VSTest' # Options: JUnit, NUnit, VSTest, xUnit, cTest
-    testResultsFiles: '**\*.trx'
-    failTaskOnFailedTests: true
+# report generator, publish tests and code coverage step
+  - task: reportgenerator@5
+    inputs:
+      reports: '$(Build.SourcesDirectory)/TestResults/Coverage/**/**.cobertura.xml'
+      targetdir: '$(Build.SourcesDirectory)/TestResults/Coverage/Reports'
+      reporttypes: 'HtmlInline_AzurePipelines_Dark;Cobertura'
+      # assemblyfilters: '+My.Company.**;-My.Company.**.Tests'
 
-# Publish code coverage results
-# Publish Cobertura or JaCoCo code coverage results from a build
-- task: PublishCodeCoverageResults@1
-  inputs:
-    codeCoverageTool: 'Cobertura' # Available options: 'JaCoCo', 'Cobertura'
-    summaryFileLocation: '**\*.cobertura.xml' #'$(Build.SourcesDirectory)/artifacts/TestResults/$(_BuildConfig)/Reports/Summary/Cobertura.xml'
-    #pathToSources: # Optional
-    #reportDirectory: # Optional
-    #additionalCodeCoverageFiles: # Optional
-    #failIfCoverageEmpty: false # Optional
+  - task: PublishTestResults@2
+    inputs:
+      testResultsFormat: 'VSTest'
+      testResultsFiles: '**/*.trx'
+      mergeTestResults: true
+      failTaskOnFailedTests: false
+
+  - task: PublishCodeCoverageResults@1
+    inputs:
+      codeCoverageTool: 'cobertura'
+      summaryFileLocation: $(Build.SourcesDirectory)/TestResults/Coverage/Reports/Cobertura.xml
+      reportDirectory: $(Build.SourcesDirectory)/TestResults/Coverage/Reports
+      failIfCoverageEmpty: false
 
 - task: DotNetCoreCLI@2
   displayName: Publish
