@@ -65,6 +65,7 @@ steps:
       !**\obj\**
     searchFolder: '$(System.DefaultWorkingDirectory)'
     resultsFolder: '$(Agent.TempDirectory)/TestResults'
+    codeCoverageEnabled: true
 
 - task: PublishTestResults@2
   inputs:
