@@ -59,7 +59,7 @@
                         r
                             .StartsWith
                                 (
-                                    "hello"
+                                    hello
                                     , StringComparison.OrdinalIgnoreCase
                                 )
                     );
