@@ -139,8 +139,7 @@ steps:
 ```
 
 ## Azure Pipeline CI With MsTest Unit Tests VSTest-Github-ASP.NET Core-CI-Classic Mode:
-[![Build Status](https://microshaoft.visualstudio.com/AzurePipelines/_apis/build/status/AzurePipelineCIWithMsTestUnitTestsVSTest-ASP.NETCore-CI-Classic-Mode?branchName=master)](https://microshaoft.visualstudio.com/AzurePipelines/_build/latest?definitionId=35&branchName=master)
-
+[![Build Status](https://microshaoft.visualstudio.com/AzurePipelines/_apis/build/status/Azure%20Pipeline%20CI%20With%20MsTest%20Unit%20Tests%20VSTest-Github-ASP.NET%20Core-CI-Classic%20Mode?branchName=master)](https://microshaoft.visualstudio.com/AzurePipelines/_build/latest?definitionId=35&branchName=master)
 
 ## Azure Pipeline CI With MsTest Unit Tests VSTest-Github-ASP.NET Core-CI-Yaml Mode:
-[![Build Status](https://microshaoft.visualstudio.com/AzurePipelines/_apis/build/status/AzurePipelineCIWithMsTestUnitTestsVSTest-ASP.NETCore-CI-Yaml-Mode?branchName=master)](https://microshaoft.visualstudio.com/AzurePipelines/_build/latest?definitionId=36&branchName=master)
+[![Build Status](https://microshaoft.visualstudio.com/AzurePipelines/_apis/build/status/Azure%20Pipeline%20CI%20With%20MsTest%20Unit%20Tests%20VSTest-Github-ASP.NET%20Core-CI-Yaml%20Mode?branchName=master)](https://microshaoft.visualstudio.com/AzurePipelines/_build/latest?definitionId=38&branchName=master)
