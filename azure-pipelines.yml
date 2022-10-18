@@ -71,25 +71,25 @@ steps:
 
 # report generator, publish tests and code coverage step
 - task: reportgenerator@5
-    inputs:
-        reports: '$(Build.SourcesDirectory)/TestResults/Coverage/**/**.cobertura.xml'
-        targetdir: '$(Build.SourcesDirectory)/TestResults/Coverage/Reports'
-        reporttypes: 'HtmlInline_AzurePipelines_Dark;Cobertura'
-        # assemblyfilters: '+My.Company.**;-My.Company.**.Tests'
+  inputs:
+    reports: '$(Build.SourcesDirectory)/TestResults/Coverage/**/**.cobertura.xml'
+    targetdir: '$(Build.SourcesDirectory)/TestResults/Coverage/Reports'
+    reporttypes: 'HtmlInline_AzurePipelines_Dark;Cobertura'
+    # assemblyfilters: '+My.Company.**;-My.Company.**.Tests'
 
 - task: PublishTestResults@2
-    inputs:
-        testResultsFormat: 'VSTest'
-        testResultsFiles: '**/*.trx'
-        mergeTestResults: true
-        failTaskOnFailedTests: false
+  inputs:
+    testResultsFormat: 'VSTest'
+    testResultsFiles: '**/*.trx'
+    mergeTestResults: true
+    failTaskOnFailedTests: false
 
 - task: PublishCodeCoverageResults@1
-    inputs:
-        codeCoverageTool: 'cobertura'
-        summaryFileLocation: $(Build.SourcesDirectory)/TestResults/Coverage/Reports/Cobertura.xml
-        reportDirectory: $(Build.SourcesDirectory)/TestResults/Coverage/Reports
-        failIfCoverageEmpty: false
+  inputs:
+    codeCoverageTool: 'cobertura'
+    summaryFileLocation: $(Build.SourcesDirectory)/TestResults/Coverage/Reports/Cobertura.xml
+    reportDirectory: $(Build.SourcesDirectory)/TestResults/Coverage/Reports
+    failIfCoverageEmpty: false
 
 - task: DotNetCoreCLI@2
   displayName: Publish
