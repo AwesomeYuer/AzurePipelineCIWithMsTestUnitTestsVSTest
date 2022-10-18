@@ -8,7 +8,7 @@ vstest.console.exe ConsoleApp1Tests\bin\Debug\net6.0\ConsoleApp1Tests.dll --logg
 # install as below on your Azure DevOps organization:
 # https://marketplace.visualstudio.com/items?itemName=Palmmedia.reportgenerator
 
-## Classic Mode Options
+## Classic Mode Options:
 1. Build solution **/*.sln (MSBuild):
 ```
 Project:
@@ -42,7 +42,7 @@ Path to project(s):
     !**/*[Tt]ests.csproj
 ```
 
-## azure-pipelines.yml mode:
+## Yaml mode azure-pipelines.yml:
 ```yaml
 # ASP.NET Core (.NET Framework)
 # Build and test ASP.NET Core projects targeting the full .NET Framework.
