@@ -29,7 +29,7 @@
                     };
                 };
                 
-                var c1 = new Class1("瞅啥");
+                var c1 = new Class1("你瞅啥");
                 var r = c1.Hello("world", "world2");
                 Console.WriteLine(r);
                 Assert
