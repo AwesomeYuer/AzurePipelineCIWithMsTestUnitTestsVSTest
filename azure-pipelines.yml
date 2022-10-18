@@ -81,7 +81,7 @@ steps:
 - task: PublishCodeCoverageResults@1
   inputs:
     codeCoverageTool: 'Cobertura' # Available options: 'JaCoCo', 'Cobertura'
-    summaryFileLocation: '**/*.cobertura.xml' #'$(Build.SourcesDirectory)/artifacts/TestResults/$(_BuildConfig)/Reports/Summary/Cobertura.xml'
+    summaryFileLocation: '**\*.cobertura.xml' #'$(Build.SourcesDirectory)/artifacts/TestResults/$(_BuildConfig)/Reports/Summary/Cobertura.xml'
     #pathToSources: # Optional
     #reportDirectory: # Optional
     #additionalCodeCoverageFiles: # Optional
