@@ -5,8 +5,6 @@ vstest.console.exe ConsoleApp1Tests\bin\Debug\net6.0\ConsoleApp1Tests.dll /logge
 # https://github.com/microsoft/vstest/issues/981
 vstest.console.exe ConsoleApp1Tests\bin\Debug\net6.0\ConsoleApp1Tests.dll --logger:trx --ResultsDirectory:.\TestResults2 --Collect:"Code Coverage" -- DataCollectionRunSettings.DataCollectors.DataCollector.Configuration.Format="Cobertura"
 ```
-# install as below on your Azure DevOps organization:
-# https://marketplace.visualstudio.com/items?itemName=Palmmedia.reportgenerator
 
 ## Classic Mode Options:
 1. Build solution **/*.sln (MSBuild):
@@ -43,6 +41,7 @@ Path to project(s):
 ```
 
 ## Yaml mode azure-pipelines.yml:
+https://stackoverflow.com/questions/57177772/azure-pipelines-where-is-the-codecoverage-generated-by-vstest2
 ```yaml
 # ASP.NET Core (.NET Framework)
 # Build and test ASP.NET Core projects targeting the full .NET Framework.
