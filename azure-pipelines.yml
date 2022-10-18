@@ -65,7 +65,7 @@ steps:
       !**\obj\**
     searchFolder: '$(System.DefaultWorkingDirectory)'
     # resultsFolder: '$(Build.SourcesDirectory)/artifacts/TestResults/$(_BuildConfig)/Reports/'
-    arguments: '--logger:trx --ResultsDirectory:"TestResults/Coverage/" --Collect:"Code Coverage" -- DataCollectionRunSettings.DataCollectors.DataCollector.Configuration.Format="Cobertura"'
+    arguments: '--logger:trx --ResultsDirectory:"TestResults\Coverage\" --Collect:"Code Coverage" -- DataCollectionRunSettings.DataCollectors.DataCollector.Configuration.Format="Cobertura"'
     publishTestResults: false
     codeCoverageEnabled: true
 
@@ -74,8 +74,8 @@ steps:
 # https://marketplace.visualstudio.com/items?itemName=Palmmedia.reportgenerator
 - task: reportgenerator@5
   inputs:
-    reports: '$(Build.SourcesDirectory)/TestResults/Coverage/**/**.cobertura.xml'
-    targetdir: '$(Build.SourcesDirectory)/TestResults/Coverage/Reports'
+    reports: '$(Build.SourcesDirectory)\TestResults\Coverage\**\**.cobertura.xml'
+    targetdir: '$(Build.SourcesDirectory)\TestResults\Coverage\Reports'
     reporttypes: 'HtmlInline_AzurePipelines_Dark;Cobertura'
     assemblyfilters: '+ConsoleApp1.**;-**Tests'
 
