@@ -66,6 +66,7 @@ steps:
     searchFolder: '$(System.DefaultWorkingDirectory)'
     resultsFolder: '$(Agent.TempDirectory)/TestResults'
     arguments: '--logger:trx --ResultsDirectory:.\TestResults2 --Collect:"Code Coverage" -- DataCollectionRunSettings.DataCollectors.DataCollector.Configuration.Format="Cobertura"'
+    publishTestResults: true
     codeCoverageEnabled: true
 
 - task: PublishTestResults@2
