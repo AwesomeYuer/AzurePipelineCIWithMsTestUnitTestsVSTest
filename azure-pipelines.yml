@@ -65,7 +65,7 @@ steps:
       !**\obj\**
     searchFolder: '$(System.DefaultWorkingDirectory)'
     resultsFolder: '$(build.ArtifactStagingDirectory)/TestResults/'
-    otherConsoleOptions: '/collect:"Code Coverage;Format=Cobertura" /TestCaseFilter:"TestCategory=Class2Tests"'
+    otherConsoleOptions: '/collect:"Code Coverage;Format=Cobertura"'
     codeCoverageEnabled: true
 
 # vv Then add publish coverage manually vv
