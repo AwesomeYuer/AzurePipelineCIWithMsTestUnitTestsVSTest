@@ -45,11 +45,12 @@
             }
         }
 
-
+        [DataRow("hello")]
+        [DataRow("bye")]
+        [DataRow("愁啥")]
         [TestMethod()]
-        public void Hello_Test()
+        public void Hello_Test(string hello)
         {
-            var hello = "hello";
             var c1 = new Class1(hello);
             var r = c1.Hello("world", "world2");
             Console.WriteLine($"Return {r}");
@@ -129,7 +130,7 @@
         //[DataRow(typeof(DivideByZeroException))]
         //[DataRow(typeof(Exception))]
         [TestMethod()]
-        public void ExceptionTest
+        public void Exception_AssertHelper_ExpectedExceptionType_Test
                             (
                                 Type expectedExceptionType
                                 , string expectedExceptionMessage = null!
@@ -163,7 +164,7 @@
         [DataRow("")]
         [DataRow(null)]
         [TestMethod()]
-        public void ExceptionTest2(string expectedExceptionMessage = null!)
+        public void Exception_AssertHelper_ExpectedException_Test(string expectedExceptionMessage = null!)
         {
             Assert
                 .That
@@ -192,7 +193,7 @@
         //[DataRow(typeof(DivideByZeroException))]
         //[DataRow(typeof(Exception))]
         [TestMethod()]
-        public void ExceptionTest3()
+        public void Exception_ThrowsException_Test()
         {
             // fail
             Assert
@@ -217,7 +218,7 @@
 
         [ExpectedException(typeof(NotImplementedException))]
         [TestMethod()]
-        public void ExceptionTest4()
+        public void Exception_ExpectedException_Test()
         {
             // fail
             throw new NotImplementedException();
