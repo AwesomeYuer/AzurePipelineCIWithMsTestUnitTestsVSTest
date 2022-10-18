@@ -71,6 +71,17 @@ steps:
 #    testResultsFiles: '**/*.trx'
 #    failTaskOnFailedTests: true
 
+# Publish code coverage results
+# Publish Cobertura or JaCoCo code coverage results from a build
+- task: PublishCodeCoverageResults@1
+  inputs:
+    codeCoverageTool: 'JaCoCo' # Available options: 'JaCoCo', 'Cobertura'
+    summaryFileLocation: '$(System.DefaultWorkingDirectory)/MyApp/**/site/cobertura/coverage.xml'
+    #pathToSources: # Optional
+    #reportDirectory: # Optional
+    #additionalCodeCoverageFiles: # Optional
+    #failIfCoverageEmpty: false # Optional
+
 - task: DotNetCoreCLI@2
   displayName: Publish
   inputs:
