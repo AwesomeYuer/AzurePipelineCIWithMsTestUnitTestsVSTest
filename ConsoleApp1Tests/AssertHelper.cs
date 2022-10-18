@@ -183,7 +183,6 @@ namespace Microshaoft.UnitTesting.MsTest
                                     , Action<Exception> onProcessAction = null!
                                     , bool drillDownInnerExceptions = true
                                 )
-
         {
             try
             {
