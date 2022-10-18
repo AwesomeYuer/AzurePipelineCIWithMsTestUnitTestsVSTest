@@ -76,8 +76,8 @@ steps:
 # Publish Cobertura or JaCoCo code coverage results from a build
 - task: PublishCodeCoverageResults@1
   inputs:
-    codeCoverageTool: 'JaCoCo' # Available options: 'JaCoCo', 'Cobertura'
-    summaryFileLocation: $(System.DefaultWorkingDirectory)/MyApp/**/site/JaCoCo/coverage.xml
+    codeCoverageTool: 'Cobertura' # Available options: 'JaCoCo', 'Cobertura'
+    summaryFileLocation: '$(Build.SourcesDirectory)/artifacts/TestResults/$(_BuildConfig)/Reports/Summary/Cobertura.xml'
     #pathToSources: # Optional
     #reportDirectory: # Optional
     #additionalCodeCoverageFiles: # Optional
