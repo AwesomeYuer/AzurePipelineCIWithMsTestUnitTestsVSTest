@@ -64,6 +64,8 @@ steps:
       !**\*TestAdapter.dll
       !**\obj\**
     searchFolder: '$(System.DefaultWorkingDirectory)'
+    resultsFolder: '$(Build.SourcesDirectory)/TestResults/Coverage/'
+    otherConsoleOptions: '--Collect:"Code Coverage" -- DataCollectionRunSettings.DataCollectors.DataCollector.Configuration.Format="Cobertura"'
     codeCoverageEnabled: true
 
 - task: DotNetCoreCLI@2
