@@ -9,7 +9,7 @@
     public class Class1Tests
     {
         [TestMethod()]
-        public void HelloConstructorTest()
+        public void Hello_Shim_Constructor_Test()
         {
             using (ShimsContext.Create())
             {
