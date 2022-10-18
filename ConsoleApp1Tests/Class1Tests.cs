@@ -24,7 +24,7 @@
                         HelloStringString = (whom, whom2) =>
                         {
                             return
-                                $@"!{_hello}, {whom2}, {whom}";
+                                $@"!{_hello}: {whom2}, {whom}";
                         }
                     };
                 };
@@ -78,7 +78,7 @@
                         (sender, whom, whom2) =>
                         {
                             i++;
-                            var r = $"Shim Good Bye {whom}, {whom2}";
+                            var r = $"Shim Good Bye: {whom}, {whom2}";
                             Console.WriteLine($"Shiming return {r}");
                             return r;
                         };
@@ -106,7 +106,7 @@
                  HelloStringString =
                     (whom, whom2) =>
                     {
-                        var r = $"Stub Good Bye {whom}, {whom2}";
+                        var r = $"Stub Good Bye: {whom}, {whom2}";
                         Console.WriteLine($"Stubing return {r}");
                         return r;
                     }
@@ -116,7 +116,8 @@
             Assert
                 .IsTrue
                     (
-                        r.StartsWith
+                        r
+                            .StartsWith
                                 (
                                     "Stub"
                                     , StringComparison.OrdinalIgnoreCase
