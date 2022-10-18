@@ -65,6 +65,7 @@ steps:
       !**\obj\**
     searchFolder: '$(System.DefaultWorkingDirectory)'
     resultsFolder: '$(Agent.TempDirectory)/TestResults'
+    arguments: '--logger:trx --ResultsDirectory:.\TestResults2 --Collect:"Code Coverage" -- DataCollectionRunSettings.DataCollectors.DataCollector.Configuration.Format="Cobertura"'
     codeCoverageEnabled: true
 
 - task: PublishTestResults@2
@@ -72,16 +73,14 @@ steps:
     testRunner: VSTest
     # testResultsFormat: 'VSTest' # Options: JUnit, NUnit, VSTest, xUnit, cTest
     testResultsFiles: '**/*.trx'
-    searchFolder: $(System.DefaultWorkingDirectory)' # Optional
     failTaskOnFailedTests: true
-
 
 # Publish code coverage results
 # Publish Cobertura or JaCoCo code coverage results from a build
 - task: PublishCodeCoverageResults@1
   inputs:
     codeCoverageTool: 'Cobertura' # Available options: 'JaCoCo', 'Cobertura'
-    summaryFileLocation: '**/Cobertura.xml' #'$(Build.SourcesDirectory)/artifacts/TestResults/$(_BuildConfig)/Reports/Summary/Cobertura.xml'
+    summaryFileLocation: '**/*.cobertura.xml' #'$(Build.SourcesDirectory)/artifacts/TestResults/$(_BuildConfig)/Reports/Summary/Cobertura.xml'
     #pathToSources: # Optional
     #reportDirectory: # Optional
     #additionalCodeCoverageFiles: # Optional
