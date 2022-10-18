@@ -65,7 +65,7 @@ steps:
       !**\obj\**
     searchFolder: '$(System.DefaultWorkingDirectory)'
     resultsFolder: '$(Build.SourcesDirectory)/artifacts/TestResults/$(_BuildConfig)/Reports/'
-    arguments: '--logger:trx --Collect:"Code Coverage" -- DataCollectionRunSettings.DataCollectors.DataCollector.Configuration.Format="Cobertura"'
+    # arguments: '--logger:trx --Collect:"Code Coverage" -- DataCollectionRunSettings.DataCollectors.DataCollector.Configuration.Format="Cobertura"'
     publishTestResults: true
     codeCoverageEnabled: true
 
