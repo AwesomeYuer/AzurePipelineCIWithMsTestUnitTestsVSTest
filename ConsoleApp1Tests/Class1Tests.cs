@@ -194,5 +194,13 @@
                         , $@"Not {nameof(DivideByZeroException)}(""hello"")  was thrown"
                     );
         }
+
+        [ExpectedException(typeof(ArgumentNullException))]
+        [TestMethod()]
+        public void ExceptionTest4()
+        {
+            // fail
+            throw new NotImplementedException();
+        }
     }
 }
