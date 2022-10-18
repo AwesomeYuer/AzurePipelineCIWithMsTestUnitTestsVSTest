@@ -47,7 +47,7 @@
 
         [DataRow("hello")]
         [DataRow("bye")]
-        [DataRow("愁啥")]
+        [DataRow("你愁啥")]
         [TestMethod()]
         public void Hello_Test(string hello)
         {
