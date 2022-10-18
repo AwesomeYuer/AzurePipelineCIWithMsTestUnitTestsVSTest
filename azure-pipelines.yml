@@ -64,13 +64,14 @@ steps:
       !**\*TestAdapter.dll
       !**\obj\**
     searchFolder: '$(System.DefaultWorkingDirectory)'
+    resultsFolder: '$(Agent.TempDirectory)/TestResults'
 
 - task: PublishTestResults@2
   inputs:
     testRunner: VSTest
-    testResultsFormat: 'VSTest' # Options: JUnit, NUnit, VSTest, xUnit, cTest
+    # testResultsFormat: 'VSTest' # Options: JUnit, NUnit, VSTest, xUnit, cTest
     testResultsFiles: '**/*.trx'
-    searchFolder: '$(System.DefaultWorkingDirectory)' # Optional
+    searchFolder: $(System.DefaultWorkingDirectory)' # Optional
     failTaskOnFailedTests: true
 
 
@@ -79,7 +80,7 @@ steps:
 - task: PublishCodeCoverageResults@1
   inputs:
     codeCoverageTool: 'Cobertura' # Available options: 'JaCoCo', 'Cobertura'
-    summaryFileLocation: '$(Build.SourcesDirectory)/artifacts/TestResults/$(_BuildConfig)/Reports/Summary/Cobertura.xml'
+    summaryFileLocation: '**/Cobertura.xml' #'$(Build.SourcesDirectory)/artifacts/TestResults/$(_BuildConfig)/Reports/Summary/Cobertura.xml'
     #pathToSources: # Optional
     #reportDirectory: # Optional
     #additionalCodeCoverageFiles: # Optional
