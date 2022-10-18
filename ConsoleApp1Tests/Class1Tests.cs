@@ -195,7 +195,7 @@
                     );
         }
 
-        [ExpectedException(typeof(ArgumentNullException))]
+        [ExpectedException(typeof(NotImplementedException))]
         [TestMethod()]
         public void ExceptionTest4()
         {
