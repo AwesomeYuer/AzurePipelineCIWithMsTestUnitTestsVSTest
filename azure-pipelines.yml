@@ -72,6 +72,7 @@ steps:
 # report generator, publish tests and code coverage step
 # install as below on your Azure DevOps organization:
 # https://marketplace.visualstudio.com/items?itemName=Palmmedia.reportgenerator
+# Empty Html report
 - task: reportgenerator@5
   inputs:
     reports: '$(Build.SourcesDirectory)\TestResults\Coverage\**\**.cobertura.xml'
