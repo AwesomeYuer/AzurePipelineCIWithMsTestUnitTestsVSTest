@@ -68,6 +68,7 @@ steps:
 - task: PublishTestResults@2
   inputs:
     testRunner: VSTest
+    testResultsFormat: 'VSTest' # Options: JUnit, NUnit, VSTest, xUnit, cTest
     testResultsFiles: '**/*.trx'
     failTaskOnFailedTests: true
 
