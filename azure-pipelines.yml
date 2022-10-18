@@ -64,8 +64,8 @@ steps:
       !**\*TestAdapter.dll
       !**\obj\**
     searchFolder: '$(System.DefaultWorkingDirectory)'
-    # resultsFolder: '$(Build.SourcesDirectory)/artifacts/TestResults/$(_BuildConfig)/Reports/'
-    otherConsoleOptions: '--logger:trx --ResultsDirectory:"TestResults\Coverage\" --Collect:"Code Coverage" -- DataCollectionRunSettings.DataCollectors.DataCollector.Configuration.Format="Cobertura"'
+    resultsFolder: '$(Build.SourcesDirectory)/TestResults/Coverage/'
+    otherConsoleOptions: '--logger:trx --Collect:"Code Coverage" -- DataCollectionRunSettings.DataCollectors.DataCollector.Configuration.Format="Cobertura"'
     publishTestResults: false
     # codeCoverageEnabled: true
 
