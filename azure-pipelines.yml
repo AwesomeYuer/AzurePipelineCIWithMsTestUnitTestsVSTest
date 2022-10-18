@@ -65,9 +65,9 @@ steps:
       !**\obj\**
     searchFolder: '$(System.DefaultWorkingDirectory)'
     resultsFolder: '$(Build.SourcesDirectory)/TestResults/Coverage/'
-    otherConsoleOptions: '--logger:trx --Collect:"Code Coverage" -- DataCollectionRunSettings.DataCollectors.DataCollector.Configuration.Format="Cobertura"'
+    otherConsoleOptions: '--Collect:"Code Coverage" -- DataCollectionRunSettings.DataCollectors.DataCollector.Configuration.Format="Cobertura"'
     publishTestResults: false
-    # codeCoverageEnabled: true
+    codeCoverageEnabled: true
 
 # report generator, publish tests and code coverage step
 # install as below on your Azure DevOps organization:
