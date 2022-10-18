@@ -6,40 +6,6 @@ vstest.console.exe ConsoleApp1Tests\bin\Debug\net6.0\ConsoleApp1Tests.dll /logge
 vstest.console.exe ConsoleApp1Tests\bin\Debug\net6.0\ConsoleApp1Tests.dll --logger:trx --ResultsDirectory:.\TestResults2 --Collect:"Code Coverage" -- DataCollectionRunSettings.DataCollectors.DataCollector.Configuration.Format="Cobertura"
 ```
 
-## Classic Mode Options:
-1. Build solution **/*.sln (MSBuild):
-```
-Project:
-    **/*.sln
-
-MSBuild Architecture:
-    MSBuild x64
-```
-
-2. Build (.NET Core):
-```
-Path to project(s):
-    **/*.csproj
-    !**/*[Tt]ests.csproj
-```
-
-3. VsTest - testAssemblies (Visual Studio Test):
-```
-Test files:
-    **\*[Tt]ests.dll
-    !**\*TestAdapter.dll
-    !**\obj\**
-```
-
-4. Publish (.NET Core):
-```
-X publish web projects
-
-Path to project(s):
-    **/*.csproj
-    !**/*[Tt]ests.csproj
-```
-
 ## Yaml mode azure-pipelines.yml:
 https://stackoverflow.com/questions/57177772/azure-pipelines-where-is-the-codecoverage-generated-by-vstest2
 ```yaml
@@ -137,8 +103,42 @@ steps:
   condition: succeededOrFailed()
 ```
 
-## Azure Pipeline CI With MsTest Unit Tests VSTest-Github-ASP.NET Core-CI-Classic Mode:
-[![Build Status](https://microshaoft.visualstudio.com/AzurePipelines/_apis/build/status/Azure%20Pipeline%20CI%20With%20MsTest%20Unit%20Tests%20VSTest-Github-ASP.NET%20Core-CI-Classic%20Mode?branchName=master)](https://microshaoft.visualstudio.com/AzurePipelines/_build/latest?definitionId=35&branchName=master)
+## Classic Mode Options:
+1. Build solution **/*.sln (MSBuild):
+```
+Project:
+    **/*.sln
+
+MSBuild Architecture:
+    MSBuild x64
+```
+
+2. Build (.NET Core):
+```
+Path to project(s):
+    **/*.csproj
+    !**/*[Tt]ests.csproj
+```
+
+3. VsTest - testAssemblies (Visual Studio Test):
+```
+Test files:
+    **\*[Tt]ests.dll
+    !**\*TestAdapter.dll
+    !**\obj\**
+```
+
+4. Publish (.NET Core):
+```
+X publish web projects
+
+Path to project(s):
+    **/*.csproj
+    !**/*[Tt]ests.csproj
+```
 
 ## Azure Pipeline CI With MsTest Unit Tests VSTest-Github-ASP.NET Core-CI-Yaml Mode:
 [![Build Status](https://microshaoft.visualstudio.com/AzurePipelines/_apis/build/status/Azure%20Pipeline%20CI%20With%20MsTest%20Unit%20Tests%20VSTest-Github-ASP.NET%20Core-CI-Yaml%20Mode?branchName=master)](https://microshaoft.visualstudio.com/AzurePipelines/_build/latest?definitionId=38&branchName=master)
+
+## Azure Pipeline CI With MsTest Unit Tests VSTest-Github-ASP.NET Core-CI-Classic Mode:
+[![Build Status](https://microshaoft.visualstudio.com/AzurePipelines/_apis/build/status/Azure%20Pipeline%20CI%20With%20MsTest%20Unit%20Tests%20VSTest-Github-ASP.NET%20Core-CI-Classic%20Mode?branchName=master)](https://microshaoft.visualstudio.com/AzurePipelines/_build/latest?definitionId=35&branchName=master)
