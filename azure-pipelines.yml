@@ -70,6 +70,7 @@ steps:
     testRunner: VSTest
     testResultsFormat: 'VSTest' # Options: JUnit, NUnit, VSTest, xUnit, cTest
     testResultsFiles: '**/*.trx'
+    searchFolder: '$(System.DefaultWorkingDirectory)' # Optional
     failTaskOnFailedTests: true
 
 
