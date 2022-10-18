@@ -45,8 +45,28 @@
             }
         }
 
+
         [TestMethod()]
-        public void HelloTest()
+        public void Hello_Test()
+        {
+            var hello = "hello";
+            var c1 = new Class1(hello);
+            var r = c1.Hello("world", "world2");
+            Console.WriteLine($"Return {r}");
+            Assert
+                .IsTrue
+                    (
+                        r
+                            .StartsWith
+                                (
+                                    "hello"
+                                    , StringComparison.OrdinalIgnoreCase
+                                )
+                    );
+        }
+
+        [TestMethod()]
+        public void Hello_Shim_Test()
         {
             using (ShimsContext.Create())
             {
@@ -77,7 +97,7 @@
         }
 
         [TestMethod()]
-        public void HelloTest2()
+        public void Hello_Stub_Test()
         {
             //Fakes stubClass1 = new Fakes.StubClass1();
             var stubIHello = new StubIHello()
