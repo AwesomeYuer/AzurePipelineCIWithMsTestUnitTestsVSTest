@@ -64,8 +64,8 @@ steps:
       !**\*TestAdapter.dll
       !**\obj\**
     searchFolder: '$(System.DefaultWorkingDirectory)'
-    resultsFolder: '$(Agent.TempDirectory)/TestResults'
-    arguments: '--logger:trx --ResultsDirectory:.\TestResults2 --Collect:"Code Coverage" -- DataCollectionRunSettings.DataCollectors.DataCollector.Configuration.Format="Cobertura"'
+    resultsFolder: '$(Build.SourcesDirectory)/artifacts/TestResults/$(_BuildConfig)/Reports/'
+    arguments: '--logger:trx --Collect:"Code Coverage" -- DataCollectionRunSettings.DataCollectors.DataCollector.Configuration.Format="Cobertura"'
     publishTestResults: true
     codeCoverageEnabled: true
 
@@ -73,7 +73,7 @@ steps:
   inputs:
     testRunner: VSTest
     # testResultsFormat: 'VSTest' # Options: JUnit, NUnit, VSTest, xUnit, cTest
-    testResultsFiles: '**/*.trx'
+    testResultsFiles: '**\*.trx'
     failTaskOnFailedTests: true
 
 # Publish code coverage results
