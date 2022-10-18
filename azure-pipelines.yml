@@ -64,8 +64,7 @@ steps:
       !**\*TestAdapter.dll
       !**\obj\**
     searchFolder: '$(System.DefaultWorkingDirectory)'
-    resultsFolder: '$(build.ArtifactStagingDirectory)/Test/Results'
-    # otherConsoleOptions: '--Collect:"Code Coverage" -- DataCollectionRunSettings.DataCollectors.DataCollector.Configuration.Format="Cobertura"'
+    resultsFolder: '$(build.ArtifactStagingDirectory)/TestResults/'
     otherConsoleOptions: '/collect:"Code Coverage;Format=Cobertura"'  # <<<< this is the important bit
     codeCoverageEnabled: true
 
@@ -73,8 +72,7 @@ steps:
 - task: PublishCodeCoverageResults@1
   inputs:
     codeCoverageTool: 'Cobertura'
-    summaryFileLocation: '$(build.ArtifactStagingDirectory)/Test/Results/**/*.xml'
-
+    summaryFileLocation: '$(build.ArtifactStagingDirectory)/TestResults/**/*.Cobertura.xml'
 
 - task: DotNetCoreCLI@2
   displayName: Publish
