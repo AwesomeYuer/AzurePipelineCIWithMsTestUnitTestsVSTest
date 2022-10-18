@@ -53,7 +53,7 @@
         {
             var c1 = new Class1(hello);
             var r = c1.Hello("world", "world2");
-            Console.WriteLine($"Return {r}");
+            Console.WriteLine($@"Return=""{r}""");
             Assert
                 .IsTrue
                     (
@@ -79,7 +79,7 @@
                         {
                             i++;
                             var r = $"Shim Good Bye: {whom}, {whom2}";
-                            Console.WriteLine($"Shiming return {r}");
+                            Console.WriteLine($@"Shiming return=""{r}""");
                             return r;
                         };
                 var c1 = new Class1("你好");
@@ -107,7 +107,7 @@
                     (whom, whom2) =>
                     {
                         var r = $"Stub Good Bye: {whom}, {whom2}";
-                        Console.WriteLine($"Stubing return {r}");
+                        Console.WriteLine($@"Stubing return=""{r}""");
                         return r;
                     }
             };
