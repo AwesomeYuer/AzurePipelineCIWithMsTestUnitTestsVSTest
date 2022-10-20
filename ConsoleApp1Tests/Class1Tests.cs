@@ -222,7 +222,9 @@
         public void Exception_ExpectedException_Test()
         {
             // fail
-            throw new NotImplementedException();
+            throw
+                //new NotImplementedException();
+                new ArgumentNullException();
         }
     }
 }
