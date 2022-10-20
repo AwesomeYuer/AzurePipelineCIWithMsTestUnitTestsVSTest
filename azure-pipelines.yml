@@ -41,6 +41,9 @@ steps:
   inputs:
     restoreSolution: '$(solution)'
 
+# Using Microsoft Fakes in the CI
+# Microsoft Fakes Assembly Generation
+# https://learn.microsoft.com/en-us/visualstudio/test/isolating-code-under-test-with-microsoft-fakes?view=vs-2022&tabs=csharp
 - task: VSBuild@1
   inputs:
     solution: '$(solution)'
