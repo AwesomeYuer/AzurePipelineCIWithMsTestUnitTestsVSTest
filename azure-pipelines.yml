@@ -41,16 +41,6 @@ steps:
   inputs:
     restoreSolution: '$(solution)'
 
-# Using Microsoft Fakes in the CI
-# Microsoft Fakes Assembly Generation
-# https://learn.microsoft.com/en-us/visualstudio/test/isolating-code-under-test-with-microsoft-fakes?view=vs-2022&tabs=csharp
-- task: VSBuild@1
-  inputs:
-    solution: '$(solution)'
-    # msbuildArgs: '/p:DeployOnBuild=true /p:WebPublishMethod=Package /p:PackageAsSingleFile=true /p:SkipInvalidConfigurations=true /p:DesktopBuildPackageLocation="$(build.artifactStagingDirectory)\WebApp.zip" /p:DeployIisAppPath="Default Web Site"'
-    platform: '$(buildPlatform)'
-    configuration: '$(buildConfiguration)'
-
 - task: DotNetCoreCLI@2
   displayName: Build
   inputs:
@@ -58,6 +48,17 @@ steps:
      **/*.csproj
      !**/*[Tt]ests.csproj
     arguments: '--configuration $(BuildConfiguration)'
+
+# Using Microsoft Fakes in the CI
+# Microsoft Fakes Assembly Generation
+# https://learn.microsoft.com/en-us/visualstudio/test/isolating-code-under-test-with-microsoft-fakes?view=vs-2022&tabs=csharp
+- task: VSBuild@1
+  inputs:
+    # solution: '**/*Tests.csproj' #'$(solution)'
+    msbuildArgs: '**/*Tests.csproj'
+    platform: '$(buildPlatform)'
+    configuration: '$(buildConfiguration)'
+
 
 - task: VSTest@2
   inputs:
