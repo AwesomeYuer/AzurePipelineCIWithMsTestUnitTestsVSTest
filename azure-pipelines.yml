@@ -54,7 +54,7 @@ steps:
 # https://learn.microsoft.com/en-us/visualstudio/test/isolating-code-under-test-with-microsoft-fakes?view=vs-2022&tabs=csharp
 - task: VSBuild@1
   inputs:
-    # solution: '**/*Tests.csproj' #'$(solution)'
+    solution: '' # '**/*Tests.csproj' # '$(solution)'
     msbuildArgs: 'ChinaCPPMigTransLayer.MSTest.UnitTests\'
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
