@@ -55,7 +55,7 @@ steps:
 - task: VSBuild@1
   inputs:
     # solution: '**/*Tests.csproj' #'$(solution)'
-    msbuildArgs: '**/*Tests.csproj'
+    msbuildArgs: 'ChinaCPPMigTransLayer.MSTest.UnitTests\'
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
 
