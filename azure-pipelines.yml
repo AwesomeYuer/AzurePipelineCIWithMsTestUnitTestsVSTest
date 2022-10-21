@@ -58,7 +58,7 @@ steps:
   inputs:
     projects: |
      **/*.csproj
-     !**/*[Tt]ests.csproj
+     # !**/*[Tt]ests.csproj
     arguments: '--configuration $(BuildConfiguration)'
 
 - task: VSTest@2
