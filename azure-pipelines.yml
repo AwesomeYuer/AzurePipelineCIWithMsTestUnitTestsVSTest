@@ -51,6 +51,8 @@ steps:
 #    platform: '$(buildPlatform)'
 #    configuration: '$(buildConfiguration)'
 
+# add FakesAssemblies to source control that's Git
+# add FakesAssemblies reference to UnitTests projects
 - task: DotNetCoreCLI@2
   displayName: Build
   inputs:
