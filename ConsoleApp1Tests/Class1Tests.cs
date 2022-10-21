@@ -223,8 +223,8 @@
         {
             // fail
             throw
-                new NotImplementedException();
-                //new ArgumentNullException();
+                //new NotImplementedException();
+                new ArgumentNullException();
         }
     }
 }
