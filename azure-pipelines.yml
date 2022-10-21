@@ -61,6 +61,7 @@ steps:
      # !**/*[Tt]ests.csproj
     arguments: '--configuration $(BuildConfiguration)'
 
+# https://stackoverflow.com/questions/57177772/azure-pipelines-where-is-the-codecoverage-generated-by-vstest2
 - task: VSTest@2
   inputs:
     testSelector: 'testAssemblies'
@@ -70,7 +71,7 @@ steps:
       !**\obj\**
     searchFolder: '$(System.DefaultWorkingDirectory)'
     resultsFolder: '$(build.ArtifactStagingDirectory)/TestResults/'
-    otherConsoleOptions: '/collect:"Code Coverage;Format=Cobertura"'
+    otherConsoleOptions: '/Collect:"Code Coverage;Format=Cobertura"'
     codeCoverageEnabled: true
 
 - task: PublishCodeCoverageResults@1
