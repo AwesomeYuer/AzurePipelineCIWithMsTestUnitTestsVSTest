@@ -71,13 +71,13 @@ steps:
       !**\obj\**
     searchFolder: '$(System.DefaultWorkingDirectory)'
     resultsFolder: '$(build.ArtifactStagingDirectory)/TestResults/'
-    otherConsoleOptions: '/Collect:"Code Coverage;Format=JaCoCo"'
+    otherConsoleOptions: '/Collect:"Code Coverage;Format=Cobertura"'
     codeCoverageEnabled: true
 
 - task: PublishCodeCoverageResults@1
   inputs:
-    codeCoverageTool: 'JaCoCo'
-    summaryFileLocation: '$(build.ArtifactStagingDirectory)/TestResults/**/*.JaCoCo.xml'
+    codeCoverageTool: 'Cobertura'
+    summaryFileLocation: '$(build.ArtifactStagingDirectory)/TestResults/**/*.Cobertura.xml'
   condition: succeededOrFailed() # always()
 
 - task: DotNetCoreCLI@2
