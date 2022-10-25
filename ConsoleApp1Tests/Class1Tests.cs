@@ -219,7 +219,7 @@
 
         [ExpectedException(typeof(NotImplementedException))]
         [TestMethod()]
-        public void Exception_ExpectedException_Test()
+        public void Exception_ExpectedExceptionAttribute_Test()
         {
             // fail
             throw
