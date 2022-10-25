@@ -30,6 +30,12 @@
     <None Update="FakesAssemblies\ConsoleApp1.Fakes.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Update="FakesAssemblies\ConsoleApp1.Fakes.fakesconfig">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="FakesAssemblies\ConsoleApp1.Fakes.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   
 </Project>
