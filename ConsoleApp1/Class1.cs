@@ -9,9 +9,13 @@
                     , string whom2
                 );
     }
+    /// <summary>
+    /// Class1
+    /// </summary>
     public class Class1
                         : IHello
     {
+        // _hello
         private string _hello;
         public Class1(string hello)
         { 
@@ -19,6 +23,7 @@
         }
         public string Hello(string whom, string whom2) 
         {
+            // output 输出
             var r = $"{_hello}: {whom}, {whom2}";
             Console.WriteLine(r);
             return r;
