@@ -24,12 +24,36 @@ steps:
       noCache: true
 
 - task: DotNetCoreCLI@2
+  displayName: New Manifest For Tool  
+  inputs:
+    command: 'custom'
+    custom: 'new'
+    arguments: 'tool-manifest'
+
+- task: DotNetCoreCLI@2
+  displayName: New Manifest For Tool  
+  inputs:
+    command: 'custom'
+    custom: 'new'
+    arguments: 'tool-manifest'
+
+- task: DotNetCoreCLI@2
   displayName: Build
   inputs:
     projects: |
      **/*.csproj
      !**/*MsTest*.csproj
     arguments: '--configuration $(BuildConfiguration)'
+
+
+
+- task: DotNetCoreCLI@2
+  displayName: New Manifest For Tool  
+  inputs:
+    command: 'custom'
+    custom: 'new'
+    arguments: 'tool-manifest'
+
 
 - task: DotNetCoreCLI@2
   displayName: Run Playwright Install  
