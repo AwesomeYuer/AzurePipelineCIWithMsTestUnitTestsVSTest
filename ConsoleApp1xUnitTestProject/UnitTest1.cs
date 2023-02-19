@@ -4,7 +4,7 @@ namespace ConsoleApp1xUnitTests
     using Microsoft.Playwright;
     public class PlaywrightXUnitTests
     {
-        
+
         //public PlaywrightXUnitTests()
         //{
         //    Console.WriteLine("Start download chromium");
@@ -15,9 +15,9 @@ namespace ConsoleApp1xUnitTests
         //    }
         //}
 
-        //[InlineData(true, "msedge")]
-        //[InlineData(true, "chrome")]
-        //[Theory]
+        [InlineData(true, "msedge")]
+        [InlineData(true, "chrome")]
+        [Theory]
         public async Task Baidu_Test(bool browserHeadless, string browserChannel)
         {
             var playwright = await Playwright.CreateAsync();
@@ -31,9 +31,9 @@ namespace ConsoleApp1xUnitTests
             Assert.True(title.Contains("°Ù¶È", StringComparison.OrdinalIgnoreCase));
         }
 
-        //[InlineData(false, "msedge")]
-        //[InlineData(false, "chrome")]
-        //[Theory]
+        [InlineData(false, "msedge")]
+        [InlineData(false, "chrome")]
+        [Theory]
         public async Task BaiduSearch_Test(bool browserHeadless, string browserChannel)
         {
             var playwright = await Playwright.CreateAsync();

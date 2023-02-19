@@ -33,12 +33,12 @@ namespace ConsoleApp1NUnitTests
         }
 
 
- 
 
 
-        //[TestCase(true, "msedge")]
-        //[TestCase(true, "chrome")]
-        //[Test]
+
+        [TestCase(true, "msedge")]
+        [TestCase(true, "chrome")]
+        [Test]
         public async Task Baidu_Test(bool browserHeadless, string browserChannel)
         {
             var playwright = await Microsoft.Playwright.Playwright.CreateAsync();
@@ -52,9 +52,9 @@ namespace ConsoleApp1NUnitTests
             Assert.IsTrue(title.Contains("°Ù¶È", StringComparison.OrdinalIgnoreCase));
         }
 
-        //[TestCase(false, "msedge")]
-        //[TestCase(false, "chrome")]
-        //[Test]
+        [TestCase(false, "msedge")]
+        [TestCase(false, "chrome")]
+        [Test]
         public async Task BaiduSearch_Test(bool browserHeadless, string browserChannel)
         {
             var playwright = await Microsoft.Playwright.Playwright.CreateAsync();
