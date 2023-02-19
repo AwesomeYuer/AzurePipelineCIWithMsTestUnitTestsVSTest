@@ -26,12 +26,12 @@ namespace ConsoleApp1NUnitTests
             await page.GotoAsync("www.bing.com");
             var title = await page.InnerTextAsync("title");
             await browser.CloseAsync();
-            Console.WriteLine($"{nameof(PlaywrightNUnitTests)} Title:《{title}》");
+            Console.WriteLine($"{nameof(PlaywrightNUnitTests)} Title: <<{title}>>");
             Assert.IsTrue(title.Contains("bing", StringComparison.OrdinalIgnoreCase));
         }
 
-        [TestCase(false, "msedge")]
-        [TestCase(false, "chrome")]
+        //[TestCase(false, "msedge")]
+        //[TestCase(false, "chrome")]
         //[Test]
         public async Task BaiduSearch_Test(bool browserHeadless, string browserChannel)
         {
@@ -56,7 +56,7 @@ namespace ConsoleApp1NUnitTests
             var title = await page.InnerTextAsync("title");
             var s = page.InnerHTMLAsync("body").Result;
             await browser.CloseAsync();
-            Console.WriteLine($"{nameof(PlaywrightNUnitTests)} Title:《{title}》");
+            Console.WriteLine($"{nameof(PlaywrightNUnitTests)} Title: <<{title}>>");
             //Assert.IsTrue(s!.Contains("百度为您找到相关结果"));
         }
     }

@@ -26,12 +26,12 @@ namespace ConsoleApp1xUnitTests
             await page.GotoAsync("https://www.bing.com");
             var title = await page.InnerTextAsync("title");
             await browser.CloseAsync();
-            Console.WriteLine($"{nameof(PlaywrightXUnitTests)} Title:《{title}》");
-            //Assert.True(title.Contains("bing", StringComparison.OrdinalIgnoreCase));
+            Console.WriteLine($"{nameof(PlaywrightXUnitTests)} Title: <<{title}>>");
+            Assert.True(title.Contains("bing", StringComparison.OrdinalIgnoreCase));
         }
 
-        [InlineData(false, "msedge")]
-        [InlineData(false, "chrome")]
+        //[InlineData(false, "msedge")]
+        //[InlineData(false, "chrome")]
         //[Theory]
         public async Task BaiduSearch_Test(bool browserHeadless, string browserChannel)
         {
@@ -56,7 +56,7 @@ namespace ConsoleApp1xUnitTests
             var title = await page.InnerTextAsync("title");
             var s = page.InnerHTMLAsync("body").Result;
             await browser.CloseAsync();
-            Console.WriteLine($"{nameof(PlaywrightXUnitTests)} Title:《{title}》");
+            Console.WriteLine($"{nameof(PlaywrightXUnitTests)} Title: <<{title}>>");
             //Assert.Contains("百度为您找到相关结果", s!);
         }
     }
