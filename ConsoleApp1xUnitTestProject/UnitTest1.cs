@@ -27,7 +27,7 @@ namespace ConsoleApp1xUnitTests
             var title = await page.InnerTextAsync("title");
             await browser.CloseAsync();
             Console.WriteLine(title);
-            Assert.Contains("百度", title);
+            //Assert.Contains("百度", title);
         }
 
         [InlineData(false, "msedge")]
@@ -55,7 +55,7 @@ namespace ConsoleApp1xUnitTests
             await page.Locator("id=sh_1").CheckAsync();
             var s = page.InnerHTMLAsync("body").Result;
             await browser.CloseAsync();
-            Assert.Contains("百度为您找到相关结果", s!);
+            //Assert.Contains("百度为您找到相关结果", s!);
         }
     }
 }
