@@ -42,7 +42,7 @@ steps:
   inputs:
     projects: |
      **/*.csproj
-     !**/*MsTest*.csproj
+     # !**/*MsTest*.csproj
     arguments: '--configuration $(BuildConfiguration)'
 
 - task: DotNetCoreCLI@2
@@ -53,12 +53,14 @@ steps:
     arguments: 'run playwright install'
 
 - task: DotNetCoreCLI@2
-  displayName: Test
+  displayName: Test@msedge
   inputs:
     command: 'test'
     projects: |
-      **/*.csproj
-      !**/*MSTest*.csproj
+      **/*NUnitTestProject*.csproj
+      # !**/*xUnitTest*.csproj
+    # filter: 'FullyQualifiedName~Playwright'
+    arguments: '-- Playwright.BrowserName=chromium Playwright.LaunchOptions.Headless=false Playwright.LaunchOptions.Channel=msedge'
 
 - task: PublishCodeCoverageResults@1
   inputs:

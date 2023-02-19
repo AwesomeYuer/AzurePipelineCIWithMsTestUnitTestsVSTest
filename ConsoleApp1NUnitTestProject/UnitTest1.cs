@@ -33,53 +33,28 @@ namespace ConsoleApp1NUnitTests
         }
 
 
-
-
-
-        [TestCase(true, "msedge")]
-        [TestCase(true, "chrome")]
         [Test]
-        public async Task Baidu_Test(bool browserHeadless, string browserChannel)
+        public async Task BaiduSearch_Test()
         {
-            var playwright = await Microsoft.Playwright.Playwright.CreateAsync();
-            await using var browser = await playwright.Chromium.LaunchAsync(new BrowserTypeLaunchOptions { Headless = true, Channel = browserChannel });
-            var page = await browser.NewPageAsync();
-            await page.GotoAsync("https://www.baidu.com");
-            
-            var title = await page.InnerTextAsync("title");
-            await browser.CloseAsync();
-            Console.WriteLine($"{nameof(PlaywrightNUnitTests)} Title: <<{title}>>");
-            Assert.IsTrue(title.Contains("百度", StringComparison.OrdinalIgnoreCase));
-        }
+            await Page.GotoAsync("https://www.baidu.com");
 
-        [TestCase(false, "msedge")]
-        [TestCase(false, "chrome")]
-        [Test]
-        public async Task BaiduSearch_Test(bool browserHeadless, string browserChannel)
-        {
-            var playwright = await Microsoft.Playwright.Playwright.CreateAsync();
-            //await using var browser = await playwright.Chromium.LaunchAsync();
-            var browser = await playwright.Chromium.LaunchAsync(new BrowserTypeLaunchOptions { Headless = browserHeadless, Channel = browserChannel });
+            await Page.Locator("id=kw").FillAsync(Guid.NewGuid().ToString());
 
-            var page = await browser.NewPageAsync();
-
-            await page.GotoAsync("https://www.baidu.com");
-
-            await page.Locator("id=kw").FillAsync(Guid.NewGuid().ToString());
-
-            await page.Locator("id=su").ClickAsync();
+            await Page.Locator("id=su").ClickAsync();
 
             await Task.Delay(2000);
 
-            await page.Locator("//*[@id=\"u\"]/a[2]").HoverAsync();
+            await Page.Locator("//*[@id=\"u\"]/a[2]").HoverAsync();
 
-            await page.Locator("//*[@id=\"u\"]/div/a[1]/span").ClickAsync();
-            await page.Locator("id=sh_1").CheckAsync();
-            var title = await page.InnerTextAsync("title");
-            var s = page.InnerTextAsync("body").Result;
-            await browser.CloseAsync();
-            Console.WriteLine($"{nameof(PlaywrightNUnitTests)} Title: <<{title}>>");
-            Assert.IsTrue(s!.Contains("百度为您找到相关结果"));
+            await Page.Locator("//*[@id=\"u\"]/div/a[1]/span").ClickAsync();
+            await Page.Locator("id=sh_1").CheckAsync();
+
+            var locator = Page.Locator("title");
+            await Expect(locator).ToHaveTextAsync("百度");
+
+            locator = Page.Locator("body");
+            await Expect(locator).ToHaveTextAsync("百度为您找到相关结果");
+
         }
     }
 }
