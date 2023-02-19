@@ -7,10 +7,10 @@ trigger:
 - master
 
 pool:
-  vmImage: 'windows-latest'
+  vmImage: 'ubuntu-latest'
 
 variables:
-  solution: '**/*.Windows.sln'
+  solution: '**/*.Linux.sln'
   buildPlatform: 'Any CPU'
   buildConfiguration: 'Release'
 
@@ -32,7 +32,9 @@ steps:
       command: restore
       # feedsToUse: config
       # nugetConfigPath: 'nuget.config'
-      projects: '**/*.csproj'
+      projects: |
+         **/*.csproj
+         !**/*MSTest*.csproj
       noCache: true
 
 - task: NuGetToolInstaller@1
@@ -57,8 +59,8 @@ steps:
   displayName: Build
   inputs:
     projects: |
-     **/*.csproj
-     # !**/*[Tt]ests.csproj
+        **/*.csproj
+        !**/*MSTest*.csproj
     arguments: '--configuration $(BuildConfiguration)'
 
 # https://stackoverflow.com/questions/57177772/azure-pipelines-where-is-the-codecoverage-generated-by-vstest2
