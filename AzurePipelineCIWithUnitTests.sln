@@ -8,15 +8,16 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{248B08FC-D2C9-4525-B587-2165C68CB36B}"
 	ProjectSection(SolutionItems) = preProject
 		.gitignore = .gitignore
+		azure-pipelines-windows.yml = azure-pipelines-windows.yml
 		azure-pipelines.yml = azure-pipelines.yml
 		README.md = README.md
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApp1NUnitTestProject", "ConsoleApp1NUnitTestProject\ConsoleApp1NUnitTestProject.csproj", "{01B3DE09-6B69-4867-8296-EC1EBFC4A312}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleApp1NUnitTestProject", "ConsoleApp1NUnitTestProject\ConsoleApp1NUnitTestProject.csproj", "{01B3DE09-6B69-4867-8296-EC1EBFC4A312}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleApp1MSTestProject", "ConsoleApp1MSTestProject\ConsoleApp1MSTestProject.csproj", "{57D00131-CA3C-42E0-ADB0-7712180081C2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApp1xUnitTestProject", "ConsoleApp1xUnitTestProject\ConsoleApp1xUnitTestProject.csproj", "{5C5FF633-2D55-49CF-9D49-241C75FC942E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleApp1xUnitTestProject", "ConsoleApp1xUnitTestProject\ConsoleApp1xUnitTestProject.csproj", "{5C5FF633-2D55-49CF-9D49-241C75FC942E}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UnitTests", "UnitTests", "{78E138BD-1C16-4271-A03F-E6F4139F4629}"
 EndProject
