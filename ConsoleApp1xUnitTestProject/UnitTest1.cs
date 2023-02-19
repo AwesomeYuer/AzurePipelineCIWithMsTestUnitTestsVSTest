@@ -37,7 +37,7 @@ namespace ConsoleApp1xUnitTests
         {
             var playwright = await Playwright.CreateAsync();
             //await using var browser = await playwright.Chromium.LaunchAsync();
-            var browser = await playwright.Chromium.LaunchAsync(new BrowserTypeLaunchOptions { Headless = browserHeadless, Channel = browserChannel });
+            var browser = await playwright.Chromium.LaunchAsync(new BrowserTypeLaunchOptions { Headless = browserHeadless, Channel = browserChannel, ChromiumSandbox = true });
 
             var page = await browser.NewPageAsync();
 
