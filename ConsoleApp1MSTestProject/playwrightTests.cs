@@ -4,8 +4,8 @@
     using Microsoft.Playwright;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-    [TestClass(), TestCategory(nameof(PlaywrightTests))]
-    public class PlaywrightTests
+    [TestClass(), TestCategory(nameof(PlaywrightMsTests))]
+    public class PlaywrightMsTests
     {
 
         [TestInitialize()]
@@ -32,7 +32,7 @@
             await page.GotoAsync("https://www.baidu.com");
             var title = await page.InnerTextAsync("title");
             await browser.CloseAsync();
-            Console.WriteLine(title);
+            Console.WriteLine($"{nameof(PlaywrightMsTests)}Title:《{title}》");
             Assert.IsTrue(title.Contains("百度"));
         }
 
@@ -59,7 +59,9 @@
 
             await page.Locator("//*[@id=\"u\"]/div/a[1]/span").ClickAsync();
             await page.Locator("id=sh_1").CheckAsync();
+            var title = await page.InnerTextAsync("title");
             var s = page.InnerHTMLAsync("body").Result;
+            Console.WriteLine($"{nameof(PlaywrightMsTests)}Title:《{title}》");
             await browser.CloseAsync();
             Assert.IsTrue(s!.Contains("百度为您找到相关结果"));
         }

@@ -2,7 +2,7 @@ namespace ConsoleApp1NUnitTests
 {
     using PlaywrightEntry = Microsoft.Playwright.Program;
     using Microsoft.Playwright;
-    public class NUnitTests
+    public class PlaywrightNUnitTests
     {
         [SetUp]
         public void Setup()
@@ -26,7 +26,7 @@ namespace ConsoleApp1NUnitTests
             await page.GotoAsync("https://www.baidu.com");
             var title = await page.InnerTextAsync("title");
             await browser.CloseAsync();
-            Console.WriteLine(title);
+            Console.WriteLine($"{nameof(PlaywrightNUnitTests)}Title:《{title}》");
             //Assert.IsTrue(title.Contains("百度"));
         }
 
@@ -53,8 +53,10 @@ namespace ConsoleApp1NUnitTests
 
             await page.Locator("//*[@id=\"u\"]/div/a[1]/span").ClickAsync();
             await page.Locator("id=sh_1").CheckAsync();
+            var title = await page.InnerTextAsync("title");
             var s = page.InnerHTMLAsync("body").Result;
             await browser.CloseAsync();
+            Console.WriteLine($"{nameof(PlaywrightNUnitTests)}Title:《{title}》");
             //Assert.IsTrue(s!.Contains("百度为您找到相关结果"));
         }
     }
