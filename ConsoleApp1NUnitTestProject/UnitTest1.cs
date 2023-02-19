@@ -18,7 +18,7 @@ namespace ConsoleApp1NUnitTests
         [TestCase(true, "msedge")]
         [TestCase(true, "chrome")]
         [Test]
-        public async Task Baidu_Test(bool browserHeadless, string browserChannel)
+        public async Task Bing_Test(bool browserHeadless, string browserChannel)
         {
             var playwright = await Playwright.CreateAsync();
             await using var browser = await playwright.Chromium.LaunchAsync(new BrowserTypeLaunchOptions { Headless = true, Channel = browserChannel });
