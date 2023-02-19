@@ -32,8 +32,20 @@ namespace ConsoleApp1NUnitTests
             await Expect(title).ToHaveTextAsync("Playwright");
         }
 
-
         [Test]
+        public async Task VerifyDotNetLinkClickRedirectingToDotNetIntroPage()
+        {
+            using var playwright = await Microsoft.Playwright.Playwright.CreateAsync();
+            await using var browser = await playwright.Chromium.LaunchAsync();
+            var context = await browser.NewContextAsync();
+            var page = await context.NewPageAsync();
+            await page.GotoAsync("https://playwright.dev/dotnet/");
+            await page.ClickAsync("section >> text=.NET");
+            Assert.AreNotEqual("https://playwright.dev/dotnet/docs/intro/", page.Url);
+        }
+
+
+        //[Test]
         public async Task BaiduSearch_Test()
         {
             await Page.GotoAsync("https://www.baidu.com");
