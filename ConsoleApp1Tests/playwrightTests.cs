@@ -21,52 +21,48 @@
             }
         }
 
-        [DataRow("msedge")]
-        [DataRow("chrome")]
+        [DataRow(true, "msedge")]
+        [DataRow(true, "chrome")]
         [TestMethod()]
-        public async Task Baidu_Test(string browserChannel)
+        public async Task Baidu_Test(bool browserHeadless, string browserChannel)
         {
             var playwright = await Playwright.CreateAsync();
             await using var browser = await playwright.Chromium.LaunchAsync(new BrowserTypeLaunchOptions { Headless = true, Channel = browserChannel });
             var page = await browser.NewPageAsync();
             await page.GotoAsync("https://www.baidu.com");
             var title = await page.InnerTextAsync("title");
+            await browser.CloseAsync();
             Console.WriteLine(title);
             Assert.IsTrue(title.Contains("百度"));
         }
 
-
-        //[TestMethod()]
-        public async Task BaiduSearch_Test()
+        [DataRow(false, "chrome")]
+        [DataRow(false, "msedge")]
+        [TestMethod()]
+        public async Task BaiduSearch_Test(bool browserHeadless, string browserChannel)
         {
 
             var playwright = await Playwright.CreateAsync();
             //await using var browser = await playwright.Chromium.LaunchAsync();
-            var browser = await playwright.Chromium.LaunchAsync(new BrowserTypeLaunchOptions { Headless = false, SlowMo = 1000, Channel = "chrome", ChromiumSandbox = true });
+            var browser = await playwright.Chromium.LaunchAsync(new BrowserTypeLaunchOptions { Headless = browserHeadless, Channel = browserChannel });
+
             var page = await browser.NewPageAsync();
+            
             await page.GotoAsync("https://www.baidu.com");
-            var title = await page.InnerTextAsync("title");
-            Console.WriteLine(title);
-            Assert.IsTrue(title.Contains("百度"));
 
-            //var playwright = await Playwright.CreateAsync();
-            //var browser = await playwright.Chromium.LaunchAsync(new BrowserTypeLaunchOptions { Headless = false, SlowMo = 1000, Channel = "chrome", ChromiumSandbox = true });
+            await page.Locator("id=kw").FillAsync(Guid.NewGuid().ToString());
 
-            //var page = await browser.NewPageAsync();
-            //await page.GotoAsync("https://www.baidu.com");
+            await page.Locator("id=su").ClickAsync();
 
-            //await page.Locator("id=kw").FillAsync(Guid.NewGuid().ToString());
+            await Task.Delay(2000);
 
-            //await page.Locator("id=su").ClickAsync();
+            await page.Locator("//*[@id=\"u\"]/a[2]").HoverAsync();
 
-            //await Task.Delay(2000);
-
-            //await page.Locator("//*[@id=\"u\"]/a[2]").HoverAsync();
-
-            //await page.Locator("//*[@id=\"u\"]/div/a[1]/span").ClickAsync();
-            //await page.Locator("id=sh_1").CheckAsync();
-            //var a = page.GetByText("抱歉");
-
+            await page.Locator("//*[@id=\"u\"]/div/a[1]/span").ClickAsync();
+            await page.Locator("id=sh_1").CheckAsync();
+            var s = page.TextContentAsync("body").Result;
+            await browser.CloseAsync();
+            Assert.IsTrue(s!.Contains("百度为您找到相关结果约"));
         }
     }
 }
