@@ -53,7 +53,7 @@ namespace ConsoleApp1xUnitTests
 
             await page.Locator("//*[@id=\"u\"]/div/a[1]/span").ClickAsync();
             await page.Locator("id=sh_1").CheckAsync();
-            var s = page.InnerTextAsync("body").Result;
+            var s = page.InnerHTMLAsync("body").Result;
             await browser.CloseAsync();
             Assert.Contains("百度为您找到相关结果", s!);
         }
