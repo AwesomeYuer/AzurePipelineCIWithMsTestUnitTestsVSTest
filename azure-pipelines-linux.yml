@@ -27,14 +27,12 @@ steps:
 #     projects: '$(Parameters.RestoreBuildProjects)'
 
 - task: DotNetCoreCLI@2
-  displayName: Restore Packages
+  displayName: Restore
   inputs:
       command: restore
       # feedsToUse: config
       # nugetConfigPath: 'nuget.config'
-      projects: |
-         **/*.csproj
-         !**/*MSTest*.csproj
+      projects: '**/*.csproj'
       noCache: true
 
 - task: NuGetToolInstaller@1
@@ -59,22 +57,17 @@ steps:
   displayName: Build
   inputs:
     projects: |
-        **/*.csproj
-        !**/*MSTest*.csproj
+     **/*.csproj
+     !**/*MsTest*.csproj
     arguments: '--configuration $(BuildConfiguration)'
 
-# https://stackoverflow.com/questions/57177772/azure-pipelines-where-is-the-codecoverage-generated-by-vstest2
-- task: VSTest@2
+- task: DotNetCoreCLI@2
+  displayName: Test
   inputs:
-    testSelector: 'testAssemblies'
-    testAssemblyVer2: |
-      **\*[Tt]estProject.dll
-      !**\*TestAdapter.dll
-      !**\obj\**
-    searchFolder: '$(System.DefaultWorkingDirectory)'
-    resultsFolder: '$(build.ArtifactStagingDirectory)/TestResults/'
-    otherConsoleOptions: '/Collect:"Code Coverage;Format=Cobertura"'
-    codeCoverageEnabled: true
+    command: 'test'
+    projects: |
+      **/*.csproj
+      !**/*MSTest*.csproj
 
 - task: PublishCodeCoverageResults@1
   inputs:
@@ -89,7 +82,7 @@ steps:
     publishWebProjects: false
     projects: |
      **/*.csproj
-     !**/*[Tt]ests.csproj
+     !**/*[Tt]est*.csproj
     arguments: '--configuration $(BuildConfiguration) --output $(build.artifactstagingdirectory)'
     zipAfterPublish: True
   condition: succeededOrFailed() # always()
