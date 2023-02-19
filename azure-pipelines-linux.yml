@@ -55,9 +55,10 @@ steps:
 - task: DotNetCoreCLI@2
   displayName: Test
   inputs:
-    command: 'custom'
-    custom: 'tool '
-    arguments: 'run '
+    command: 'test'
+    projects: |
+      **/*.csproj
+      !**/*MSTest*.csproj
 
 - task: PublishCodeCoverageResults@1
   inputs:
