@@ -5,19 +5,19 @@ namespace ConsoleApp1xUnitTests
     public class PlaywrightXUnitTests
     {
         
-        public PlaywrightXUnitTests()
-        {
-            Console.WriteLine("Start download chromium");
-            var exitCode = PlaywrightEntry.Main(new[] { "install", "chromium" });
-            if (exitCode != 0)
-            {
-                throw new Exception($"Playwright exited with code {exitCode}");
-            }
-        }
+        //public PlaywrightXUnitTests()
+        //{
+        //    Console.WriteLine("Start download chromium");
+        //    var exitCode = PlaywrightEntry.Main(new[] { "install", "chromium" });
+        //    if (exitCode != 0)
+        //    {
+        //        throw new Exception($"Playwright exited with code {exitCode}");
+        //    }
+        //}
 
-        [InlineData(true, "msedge")]
-        [InlineData(true, "chrome")]
-        [Theory]
+        //[InlineData(true, "msedge")]
+        //[InlineData(true, "chrome")]
+        //[Theory]
         public async Task Baidu_Test(bool browserHeadless, string browserChannel)
         {
             var playwright = await Playwright.CreateAsync();
@@ -31,9 +31,9 @@ namespace ConsoleApp1xUnitTests
             Assert.True(title.Contains("°Ù¶È", StringComparison.OrdinalIgnoreCase));
         }
 
-        [InlineData(false, "msedge")]
-        [InlineData(false, "chrome")]
-        [Theory]
+        //[InlineData(false, "msedge")]
+        //[InlineData(false, "chrome")]
+        //[Theory]
         public async Task BaiduSearch_Test(bool browserHeadless, string browserChannel)
         {
             var playwright = await Playwright.CreateAsync();

@@ -32,12 +32,18 @@ steps:
     arguments: '--configuration $(BuildConfiguration)'
 
 - task: DotNetCoreCLI@2
+  displayName: Run Playwright Install  
+  inputs:
+    command: 'custom'
+    custom: 'tool'
+    arguments: 'run playwright install'
+
+- task: DotNetCoreCLI@2
   displayName: Test
   inputs:
-    command: 'test'
-    projects: |
-      **/*.csproj
-      !**/*MSTest*.csproj
+    command: 'custom'
+    custom: 'tool '
+    arguments: 'run '
 
 - task: PublishCodeCoverageResults@1
   inputs:

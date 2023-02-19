@@ -2,10 +2,11 @@
 {
     using PlaywrightEntry = Microsoft.Playwright.Program;
     using Microsoft.Playwright;
+    using Microsoft.Playwright.MSTest;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
 
     [TestClass(), TestCategory(nameof(PlaywrightMsTests))]
-    public class PlaywrightMsTests
+    public class PlaywrightMsTests : PageTest
     {
 
         [TestInitialize()]
@@ -26,7 +27,7 @@
         [TestMethod()]
         public async Task Baidu_Test(bool browserHeadless, string browserChannel)
         {
-            var playwright = await Playwright.CreateAsync();
+            var playwright = await Microsoft.Playwright.Playwright.CreateAsync();
             await using var browser = await playwright.Chromium.LaunchAsync(new BrowserTypeLaunchOptions { Headless = true, Channel = browserChannel });
             var page = await browser.NewPageAsync();
             await page.GotoAsync("https://www.baidu.com");
@@ -41,7 +42,7 @@
         [TestMethod()]
         public async Task BaiduSearch_Test(bool browserHeadless, string browserChannel)
         {
-            var playwright = await Playwright.CreateAsync();
+            var playwright = await Microsoft.Playwright.Playwright.CreateAsync();
             //await using var browser = await playwright.Chromium.LaunchAsync();
             var browser = await playwright.Chromium.LaunchAsync(new BrowserTypeLaunchOptions { Headless = browserHeadless, Channel = browserChannel });
 
