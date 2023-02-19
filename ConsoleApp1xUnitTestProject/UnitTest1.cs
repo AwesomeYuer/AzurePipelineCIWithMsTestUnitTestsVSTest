@@ -23,11 +23,11 @@ namespace ConsoleApp1xUnitTests
             var playwright = await Playwright.CreateAsync();
             await using var browser = await playwright.Chromium.LaunchAsync(new BrowserTypeLaunchOptions { Headless = browserHeadless, Channel = browserChannel });
             var page = await browser.NewPageAsync();
-            await page.GotoAsync("https://www.baidu.com");
+            await page.GotoAsync("https://www.bing.com");
             var title = await page.InnerTextAsync("title");
             await browser.CloseAsync();
             Console.WriteLine(title);
-            Assert.Contains("°Ù¶È", title);
+            Assert.True(title.Contains("bing", StringComparison.OrdinalIgnoreCase));
         }
 
         [InlineData(false, "msedge")]
