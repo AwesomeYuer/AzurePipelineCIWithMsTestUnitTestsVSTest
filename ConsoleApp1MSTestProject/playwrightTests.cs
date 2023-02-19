@@ -60,8 +60,8 @@
             await page.Locator("//*[@id=\"u\"]/div/a[1]/span").ClickAsync();
             await page.Locator("id=sh_1").CheckAsync();
             var title = await page.InnerTextAsync("title");
-            var s = page.InnerHTMLAsync("body").Result;
-            Console.WriteLine($"{nameof(PlaywrightMsTests)}Title:《{title}》");
+            var s = page.InnerTextAsync("body").Result;
+            Console.WriteLine($"{nameof(PlaywrightMsTests)} Title: <<{title}>>");
             await browser.CloseAsync();
             Assert.IsTrue(s!.Contains("百度为您找到相关结果"));
         }
