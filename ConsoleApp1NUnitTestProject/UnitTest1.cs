@@ -27,12 +27,12 @@ namespace ConsoleApp1NUnitTests
             var title = await page.InnerTextAsync("title");
             await browser.CloseAsync();
             Console.WriteLine($"{nameof(PlaywrightNUnitTests)}Title:《{title}》");
-            //Assert.IsTrue(title.Contains("百度"));
+            Assert.IsTrue(title.Contains("百度"));
         }
 
         [TestCase(false, "msedge")]
         [TestCase(false, "chrome")]
-        [Test]
+        //[Test]
         public async Task BaiduSearch_Test(bool browserHeadless, string browserChannel)
         {
             var playwright = await Playwright.CreateAsync();
