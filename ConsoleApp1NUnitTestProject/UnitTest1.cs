@@ -1,18 +1,12 @@
-锘縩amespace ConsoleApp1.Tests
+namespace ConsoleApp1NUnitTests
 {
     using PlaywrightEntry = Microsoft.Playwright.Program;
     using Microsoft.Playwright;
-    using Microsoft.VisualStudio.TestTools.UnitTesting;
-
-    [TestClass(), TestCategory(nameof(PlaywrightTests))]
-    public class PlaywrightTests
+    public class NUnitTests
     {
-
-        [TestInitialize()]
-        public void TestInitializeProcess()
+        [SetUp]
+        public void Setup()
         {
-            Console.WriteLine($"nameof{TestInitializeProcess}");
-
             Console.WriteLine("Start download chromium");
             var exitCode = PlaywrightEntry.Main(new[] { "install", "chromium" });
             if (exitCode != 0)
@@ -21,9 +15,9 @@
             }
         }
 
-        [DataRow(true, "msedge")]
-        [DataRow(true, "chrome")]
-        [TestMethod()]
+        [TestCase(true, "msedge")]
+        [TestCase(true, "chrome")]
+        [Test]
         public async Task Baidu_Test(bool browserHeadless, string browserChannel)
         {
             var playwright = await Playwright.CreateAsync();
@@ -33,12 +27,12 @@
             var title = await page.InnerTextAsync("title");
             await browser.CloseAsync();
             Console.WriteLine(title);
-            Assert.IsTrue(title.Contains("鐧惧害"));
+            Assert.IsTrue(title.Contains("百度"));
         }
 
-        [DataRow(false, "chrome")]
-        [DataRow(false, "msedge")]
-        [TestMethod()]
+        [TestCase(false, "msedge")]
+        [TestCase(false, "chrome")]
+        [Test]
         public async Task BaiduSearch_Test(bool browserHeadless, string browserChannel)
         {
             var playwright = await Playwright.CreateAsync();
@@ -46,7 +40,7 @@
             var browser = await playwright.Chromium.LaunchAsync(new BrowserTypeLaunchOptions { Headless = browserHeadless, Channel = browserChannel });
 
             var page = await browser.NewPageAsync();
-            
+
             await page.GotoAsync("https://www.baidu.com");
 
             await page.Locator("id=kw").FillAsync(Guid.NewGuid().ToString());
@@ -61,7 +55,7 @@
             await page.Locator("id=sh_1").CheckAsync();
             var s = page.InnerTextAsync("body").Result;
             await browser.CloseAsync();
-            Assert.IsTrue(s!.Contains("鐧惧害涓烘偍鎵惧埌鐩稿叧缁撴灉"));
+            Assert.IsTrue(s!.Contains("百度为您找到相关结果"));
         }
     }
 }

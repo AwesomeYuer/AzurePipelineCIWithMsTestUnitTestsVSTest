@@ -1,5 +1,6 @@
-﻿namespace ConsoleApp1.Tests
+﻿namespace ConsoleApp1MSTests
 {
+    using ConsoleApp1;
     using ConsoleApp1.Fakes;
     using Microshaoft.UnitTesting.MsTest;
     using Microsoft.QualityTools.Testing.Fakes;
