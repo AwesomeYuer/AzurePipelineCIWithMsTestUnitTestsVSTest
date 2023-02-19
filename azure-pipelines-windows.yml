@@ -7,15 +7,27 @@ trigger:
 - master
 
 pool:
-  vmImage: 'ubuntu-latest'
+  vmImage: 'windows-latest'
 
 variables:
+  solution: '**/*.sln'
   buildPlatform: 'Any CPU'
   buildConfiguration: 'Release'
 
+parameters:
+  - name: RestoreBuildProjects
+    type: string
+    default: '**/*.csproj'
+
 steps:
+# - task: DotNetCoreCLI@2
+#   displayName: Restore
+#   inputs:
+#     command: restore
+#     projects: '$(Parameters.RestoreBuildProjects)'
+
 - task: DotNetCoreCLI@2
-  displayName: Restore
+  displayName: Restore Packages
   inputs:
       command: restore
       # feedsToUse: config
@@ -23,21 +35,44 @@ steps:
       projects: '**/*.csproj'
       noCache: true
 
+- task: NuGetToolInstaller@1
+
+- task: NuGetCommand@2
+  inputs:
+    restoreSolution: '$(solution)'
+
+## Using Microsoft Fakes in the CI
+## Microsoft Fakes Assembly Generation
+## https://learn.microsoft.com/en-us/visualstudio/test/isolating-code-under-test-with-microsoft-fakes?view=vs-2022&tabs=csharp
+#- task: VSBuild@1
+#  inputs:
+#    solution: '$(solution)'
+#    # msbuildArgs: 'ChinaCPPMigTransLayer.MSTest.UnitTests\'
+#    platform: '$(buildPlatform)'
+#    configuration: '$(buildConfiguration)'
+
+# add FakesAssemblies to source control that's Git
+# add FakesAssemblies reference to UnitTests projects
 - task: DotNetCoreCLI@2
   displayName: Build
   inputs:
     projects: |
      **/*.csproj
-     !**/*MsTest*.csproj
+     # !**/*[Tt]ests.csproj
     arguments: '--configuration $(BuildConfiguration)'
 
-- task: DotNetCoreCLI@2
-  displayName: Test
+# https://stackoverflow.com/questions/57177772/azure-pipelines-where-is-the-codecoverage-generated-by-vstest2
+- task: VSTest@2
   inputs:
-    command: 'test'
-    projects: |
-      **/*.csproj
-      !**/*MSTest*.csproj
+    testSelector: 'testAssemblies'
+    testAssemblyVer2: |
+      **\*[Tt]estProject.dll
+      !**\*TestAdapter.dll
+      !**\obj\**
+    searchFolder: '$(System.DefaultWorkingDirectory)'
+    resultsFolder: '$(build.ArtifactStagingDirectory)/TestResults/'
+    otherConsoleOptions: '/Collect:"Code Coverage;Format=Cobertura"'
+    codeCoverageEnabled: true
 
 - task: PublishCodeCoverageResults@1
   inputs:
@@ -52,7 +87,7 @@ steps:
     publishWebProjects: false
     projects: |
      **/*.csproj
-     !**/*[Tt]est*.csproj
+     !**/*[Tt]estProject.csproj
     arguments: '--configuration $(BuildConfiguration) --output $(build.artifactstagingdirectory)'
     zipAfterPublish: True
   condition: succeededOrFailed() # always()

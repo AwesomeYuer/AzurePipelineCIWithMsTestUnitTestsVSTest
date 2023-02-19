@@ -10,22 +10,10 @@ pool:
   vmImage: 'ubuntu-latest'
 
 variables:
-  solution: '**/*.Linux.sln'
   buildPlatform: 'Any CPU'
   buildConfiguration: 'Release'
 
-parameters:
-  - name: RestoreBuildProjects
-    type: string
-    default: '**/*.csproj'
-
 steps:
-# - task: DotNetCoreCLI@2
-#   displayName: Restore
-#   inputs:
-#     command: restore
-#     projects: '$(Parameters.RestoreBuildProjects)'
-
 - task: DotNetCoreCLI@2
   displayName: Restore
   inputs:
@@ -35,24 +23,6 @@ steps:
       projects: '**/*.csproj'
       noCache: true
 
-- task: NuGetToolInstaller@1
-
-- task: NuGetCommand@2
-  inputs:
-    restoreSolution: '$(solution)'
-
-## Using Microsoft Fakes in the CI
-## Microsoft Fakes Assembly Generation
-## https://learn.microsoft.com/en-us/visualstudio/test/isolating-code-under-test-with-microsoft-fakes?view=vs-2022&tabs=csharp
-#- task: VSBuild@1
-#  inputs:
-#    solution: '$(solution)'
-#    # msbuildArgs: 'ChinaCPPMigTransLayer.MSTest.UnitTests\'
-#    platform: '$(buildPlatform)'
-#    configuration: '$(buildConfiguration)'
-
-# add FakesAssemblies to source control that's Git
-# add FakesAssemblies reference to UnitTests projects
 - task: DotNetCoreCLI@2
   displayName: Build
   inputs:
