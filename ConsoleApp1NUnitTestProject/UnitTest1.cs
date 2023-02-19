@@ -24,6 +24,7 @@ namespace ConsoleApp1NUnitTests
             await using var browser = await playwright.Chromium.LaunchAsync(new BrowserTypeLaunchOptions { Headless = true, Channel = browserChannel });
             var page = await browser.NewPageAsync();
             await page.GotoAsync("www.bing.com");
+            await page.WaitForNavigationAsync();
             var title = await page.InnerTextAsync("title");
             await browser.CloseAsync();
             Console.WriteLine($"{nameof(PlaywrightNUnitTests)} Title: <<{title}>>");
