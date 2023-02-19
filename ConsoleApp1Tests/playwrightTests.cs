@@ -41,7 +41,6 @@
         [TestMethod()]
         public async Task BaiduSearch_Test(bool browserHeadless, string browserChannel)
         {
-
             var playwright = await Playwright.CreateAsync();
             //await using var browser = await playwright.Chromium.LaunchAsync();
             var browser = await playwright.Chromium.LaunchAsync(new BrowserTypeLaunchOptions { Headless = browserHeadless, Channel = browserChannel });
@@ -60,9 +59,9 @@
 
             await page.Locator("//*[@id=\"u\"]/div/a[1]/span").ClickAsync();
             await page.Locator("id=sh_1").CheckAsync();
-            var s = page.TextContentAsync("body").Result;
+            var s = page.InnerTextAsync("body").Result;
             await browser.CloseAsync();
-            Assert.IsTrue(s!.Contains("百度为您找到相关结果约"));
+            Assert.IsTrue(s!.Contains("百度为您找到相关结果"));
         }
     }
 }
