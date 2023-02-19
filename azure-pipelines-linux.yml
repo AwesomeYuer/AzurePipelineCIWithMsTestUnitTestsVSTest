@@ -70,7 +70,7 @@ steps:
       **/*NUnitTestProject*.csproj
       # !**/*xUnitTest*.csproj
     # filter: 'FullyQualifiedName~Playwright'
-    arguments: '-e BROWSER=chromium -e HEADED=1 -e CHANNEL=msedge'
+    arguments: '-e BROWSER=chromium -e CHANNEL=msedge'
 
 
 - task: PublishCodeCoverageResults@1
