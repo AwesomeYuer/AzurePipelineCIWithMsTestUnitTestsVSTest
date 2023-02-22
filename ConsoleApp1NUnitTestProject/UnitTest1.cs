@@ -75,7 +75,12 @@ namespace ConsoleApp1NUnitTests
             await Page.Locator("id=sh_1").CheckAsync();
 
             locator = Page.Locator("body");
-            await Expect(locator).ToContainTextAsync("百度为您找到相关结果");
+            s = locator.InnerTextAsync().Result;
+
+            //Linux Expect 不支持中文
+            //await Expect(locator).ToContainTextAsync("百度为您找到相关结果");
+
+            Assert.IsTrue(s.Contains("百度为您找到相关结果", StringComparison.OrdinalIgnoreCase));
 
         }
     }
