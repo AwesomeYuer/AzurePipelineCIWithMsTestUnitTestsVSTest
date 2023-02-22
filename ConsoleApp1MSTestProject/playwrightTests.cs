@@ -9,18 +9,18 @@ namespace ConsoleApp1MSTests
     public class PlaywrightMsTests : PageTest
     {
 
-        //[TestInitialize()]
-        //public void TestInitializeProcess()
-        //{
-        //    Console.WriteLine($"nameof{TestInitializeProcess}");
+        [TestInitialize()]
+        public void TestInitializeProcess()
+        {
+            Console.WriteLine($"nameof{TestInitializeProcess}");
 
-        //    Console.WriteLine("Start download chromium");
-        //    var exitCode = PlaywrightEntry.Main(new[] { "install", "chromium" });
-        //    if (exitCode != 0)
-        //    {
-        //        throw new Exception($"Playwright exited with code {exitCode}");
-        //    }
-        //}
+            Console.WriteLine("Start download chromium");
+            var exitCode = PlaywrightEntry.Main(new[] { "install", "chromium" });
+            if (exitCode != 0)
+            {
+                throw new Exception($"Playwright exited with code {exitCode}");
+            }
+        }
 
         [DataRow(true, "msedge")]
         [DataRow(true, "chrome")]
