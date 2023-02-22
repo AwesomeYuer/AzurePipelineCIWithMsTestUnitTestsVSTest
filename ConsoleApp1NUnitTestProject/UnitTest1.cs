@@ -59,7 +59,7 @@ namespace ConsoleApp1NUnitTests
 
             //await Expect(locator).ToContainTextAsync("百度");
 
-            Console.WriteLine(s);
+            Console.WriteLine($"title: {s}");
 
             Assert.IsTrue(s.Contains("百度", StringComparison.OrdinalIgnoreCase));
                         
