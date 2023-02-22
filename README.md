@@ -28,4 +28,6 @@ dotnet test **/*UnitTest*.csproj
 ## Linux
 [![Build Status](https://microshaoft.visualstudio.com/AzurePipelines/_apis/build/status/AwesomeYuer.AzurePipelineCIWithUnitTests-Linux?branchName=master)](https://microshaoft.visualstudio.com/AzurePipelines/_build/latest?definitionId=41&branchName=master)
 
+## Windows
+[![Build Status](https://microshaoft.visualstudio.com/AzurePipelines/_apis/build/status/AwesomeYuer.AzurePipelineCIWithUnitTests-Windows?branchName=master)](https://microshaoft.visualstudio.com/AzurePipelines/_build/latest?definitionId=40&branchName=master)
 
