@@ -9,7 +9,7 @@ vstest.console.exe **\*MsTestProject.dll --logger:trx --ResultsDirectory:.\TestR
 # NUnit + Linux
 cd AzurePipelineCIWithUnitTests/
 
- dotnet build AzurePipelineCIWithUnitTests.Linux.sln
+dotnet build AzurePipelineCIWithUnitTests.Linux.sln
 
 
 
