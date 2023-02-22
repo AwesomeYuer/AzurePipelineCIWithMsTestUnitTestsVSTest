@@ -81,8 +81,7 @@ namespace ConsoleApp1NUnitTests
             locator = Page.Locator("body");
             s = locator.InnerTextAsync().Result;
 
-            //Linux Expect 不支持中文
-            //await Expect(locator).ToContainTextAsync("百度为您找到相关结果");
+            await Expect(locator).ToContainTextAsync("百度为您找到相关结果");
 
             Assert.IsTrue(s.Contains("百度为您找到相关结果", StringComparison.OrdinalIgnoreCase));
 
