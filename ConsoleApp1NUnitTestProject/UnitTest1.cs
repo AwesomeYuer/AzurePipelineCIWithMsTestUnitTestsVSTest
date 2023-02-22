@@ -48,9 +48,10 @@ namespace ConsoleApp1NUnitTests
         [Test]
         public async Task BaiduSearch_Test()
         {
-            
-
             await Page.GotoAsync("https://www.baidu.com");
+
+            var locator = Page.Locator("title");
+            await Expect(locator).ToHaveTextAsync("百度");
 
             await Page.Locator("id=kw").FillAsync(Guid.NewGuid().ToString());
 
@@ -63,8 +64,7 @@ namespace ConsoleApp1NUnitTests
             await Page.Locator("//*[@id=\"u\"]/div/a[1]/span").ClickAsync();
             await Page.Locator("id=sh_1").CheckAsync();
 
-            var locator = Page.Locator("title");
-            await Expect(locator).ToHaveTextAsync("百度");
+            
 
             locator = Page.Locator("body");
             await Expect(locator).ToHaveTextAsync("百度为您找到相关结果");
