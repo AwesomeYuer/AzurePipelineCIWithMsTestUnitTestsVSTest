@@ -64,8 +64,6 @@ namespace ConsoleApp1NUnitTests
             await Page.Locator("//*[@id=\"u\"]/div/a[1]/span").ClickAsync();
             await Page.Locator("id=sh_1").CheckAsync();
 
-            
-
             locator = Page.Locator("body");
             await Expect(locator).ToHaveTextAsync("百度为您找到相关结果");
 
