@@ -9,15 +9,17 @@ vstest.console.exe **\*MsTestProject.dll --logger:trx --ResultsDirectory:.\TestR
 # NUnit + Linux
 cd AzurePipelineCIWithUnitTests/
 
-dotnet build AzurePipelineCIWithUnitTests.Linux.sln
+dotnet build AzurePipelineCIWithUnitTests.sln
 
+dotnet new tool-manifest --force
 
+dotnet tool install Microsoft.Playwright.CLI
 
+dotnet tool run playwright install
 
+dotnet test **/*NUnitTest*.dll
 
-
-
-dotnet test **\*UnitTest*.dll
+dotnet test **/*UnitTest*.csproj
 ```
 
 

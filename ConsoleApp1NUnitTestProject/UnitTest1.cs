@@ -45,7 +45,7 @@ namespace ConsoleApp1NUnitTests
         }
 
 
-        //[Test]
+        [Test]
         public async Task BaiduSearch_Test()
         {
             await Page.GotoAsync("https://www.baidu.com");
