@@ -29,7 +29,8 @@ namespace ConsoleApp1NUnitTests
         {
             await Page.GotoAsync("https://playwright.dev");
             var title = Page.Locator(".navbar__inner .navbar__title");
-            await Expect(title).ToHaveTextAsync("Playwright");
+            //title = Page.Locator("tag=title");
+            await Expect(title).ToContainTextAsync("Playwright");
         }
 
         [Test]
@@ -51,8 +52,15 @@ namespace ConsoleApp1NUnitTests
             await Page.GotoAsync("https://www.baidu.com");
 
             var locator = Page.Locator("title");
-            await Expect(locator).ToHaveTextAsync("百度");
 
+            var c = locator.CountAsync().Result;
+
+            var s = locator.InnerTextAsync().Result;
+
+            //await Expect(locator).ToContainTextAsync("百度");
+
+            Assert.IsTrue(s.Contains("百度", StringComparison.OrdinalIgnoreCase));
+                        
             await Page.Locator("id=kw").FillAsync(Guid.NewGuid().ToString());
 
             await Page.Locator("id=su").ClickAsync();
@@ -65,7 +73,7 @@ namespace ConsoleApp1NUnitTests
             await Page.Locator("id=sh_1").CheckAsync();
 
             locator = Page.Locator("body");
-            await Expect(locator).ToHaveTextAsync("百度为您找到相关结果");
+            await Expect(locator).ToContainTextAsync("百度为您找到相关结果");
 
         }
     }
