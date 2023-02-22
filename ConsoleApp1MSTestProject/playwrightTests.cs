@@ -1,4 +1,4 @@
-﻿namespace ConsoleApp1MSTests
+namespace ConsoleApp1MSTests
 {
     using PlaywrightEntry = Microsoft.Playwright.Program;
     using Microsoft.Playwright;
@@ -9,18 +9,18 @@
     public class PlaywrightMsTests : PageTest
     {
 
-        [TestInitialize()]
-        public void TestInitializeProcess()
-        {
-            Console.WriteLine($"nameof{TestInitializeProcess}");
+        //[TestInitialize()]
+        //public void TestInitializeProcess()
+        //{
+        //    Console.WriteLine($"nameof{TestInitializeProcess}");
 
-            Console.WriteLine("Start download chromium");
-            var exitCode = PlaywrightEntry.Main(new[] { "install", "chromium" });
-            if (exitCode != 0)
-            {
-                throw new Exception($"Playwright exited with code {exitCode}");
-            }
-        }
+        //    Console.WriteLine("Start download chromium");
+        //    var exitCode = PlaywrightEntry.Main(new[] { "install", "chromium" });
+        //    if (exitCode != 0)
+        //    {
+        //        throw new Exception($"Playwright exited with code {exitCode}");
+        //    }
+        //}
 
         [DataRow(true, "msedge")]
         [DataRow(true, "chrome")]
@@ -37,8 +37,8 @@
             Assert.IsTrue(title.Contains("百度"));
         }
 
-        [DataRow(false, "chrome")]
-        [DataRow(false, "msedge")]
+        [DataRow(true, "chrome")]
+        [DataRow(true, "msedge")]
         [TestMethod()]
         public async Task BaiduSearch_Test(bool browserHeadless, string browserChannel)
         {

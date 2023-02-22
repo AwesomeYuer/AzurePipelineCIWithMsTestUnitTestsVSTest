@@ -31,8 +31,8 @@ namespace ConsoleApp1xUnitTests
             Assert.True(title.Contains("°Ù¶È", StringComparison.OrdinalIgnoreCase));
         }
 
-        [InlineData(false, "msedge")]
-        [InlineData(false, "chrome")]
+        [InlineData(true, "msedge")]
+        [InlineData(true, "chrome")]
         [Theory]
         public async Task BaiduSearch_Test(bool browserHeadless, string browserChannel)
         {
