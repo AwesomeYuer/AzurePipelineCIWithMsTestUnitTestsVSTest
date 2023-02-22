@@ -50,7 +50,7 @@ namespace ConsoleApp1NUnitTests
         public async Task BaiduSearch_Test()
         {
 
-            Console.WriteLine("ÄãºÃ...");
+            Console.WriteLine("ÄãºÃBaidu...");
 
             await Page.GotoAsync("https://www.baidu.com");
 
