@@ -59,6 +59,8 @@ namespace ConsoleApp1NUnitTests
 
             //await Expect(locator).ToContainTextAsync("百度");
 
+            Console.WriteLine(s);
+
             Assert.IsTrue(s.Contains("百度", StringComparison.OrdinalIgnoreCase));
                         
             await Page.Locator("id=kw").FillAsync(Guid.NewGuid().ToString());
