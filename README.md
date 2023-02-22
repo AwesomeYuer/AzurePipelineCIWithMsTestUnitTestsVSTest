@@ -9,17 +9,23 @@ vstest.console.exe **\*MsTestProject.dll --logger:trx --ResultsDirectory:.\TestR
 # NUnit + Linux
 cd AzurePipelineCIWithUnitTests/
 
-dotnet build AzurePipelineCIWithUnitTests.sln
-
 dotnet new tool-manifest --force
 
 dotnet tool install Microsoft.Playwright.CLI
 
+dotnet build AzurePipelineCIWithUnitTests.sln
+
 dotnet tool run playwright install
+
+//for linux
+dotnet tool run playwright install --force msedge
 
 dotnet test **/*NUnitTest*.dll
 
 dotnet test **/*UnitTest*.csproj
 ```
+
+## Linux
+[![Build Status](https://microshaoft.visualstudio.com/AzurePipelines/_apis/build/status/AwesomeYuer.AzurePipelineCIWithUnitTests-Linux?branchName=master)](https://microshaoft.visualstudio.com/AzurePipelines/_build/latest?definitionId=41&branchName=master)
 
 
