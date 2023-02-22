@@ -50,7 +50,7 @@ namespace ConsoleApp1NUnitTests
         public async Task BaiduSearch_Test()
         {
 
-            Console.WriteLine("ÄãºÃBaidu...");
+            Console.WriteLine("ä½ å¥½...");
 
             await Page.GotoAsync("https://www.baidu.com");
 
@@ -60,12 +60,12 @@ namespace ConsoleApp1NUnitTests
 
             var s = locator.InnerTextAsync().Result;
 
-            s = "°Ù¶ÈÒ»ÏÂ£¬Äã¾ÍÖªµÀ";
-            //await Expect(locator).ToContainTextAsync("°Ù¶È");
+            s = "ç™¾åº¦ä¸€ä¸‹ï¼Œä½ å°±çŸ¥é“";
+            //await Expect(locator).ToContainTextAsync("ç™¾åº¦");
 
             Console.WriteLine($"title: {s}");
 
-            Assert.IsTrue(s.Contains("°Ù¶È", StringComparison.OrdinalIgnoreCase));
+            Assert.IsTrue(s.Contains("ç™¾åº¦", StringComparison.OrdinalIgnoreCase));
                         
             await Page.Locator("id=kw").FillAsync(Guid.NewGuid().ToString());
 
@@ -81,10 +81,10 @@ namespace ConsoleApp1NUnitTests
             locator = Page.Locator("body");
             s = locator.InnerTextAsync().Result;
 
-            //Linux Expect ²»Ö§³ÖÖĞÎÄ
-            //await Expect(locator).ToContainTextAsync("°Ù¶ÈÎªÄúÕÒµ½Ïà¹Ø½á¹û");
+            //Linux Expect ä¸æ”¯æŒä¸­æ–‡
+            //await Expect(locator).ToContainTextAsync("ç™¾åº¦ä¸ºæ‚¨æ‰¾åˆ°ç›¸å…³ç»“æœ");
 
-            Assert.IsTrue(s.Contains("°Ù¶ÈÎªÄúÕÒµ½Ïà¹Ø½á¹û", StringComparison.OrdinalIgnoreCase));
+            Assert.IsTrue(s.Contains("ç™¾åº¦ä¸ºæ‚¨æ‰¾åˆ°ç›¸å…³ç»“æœ", StringComparison.OrdinalIgnoreCase));
 
         }
     }
