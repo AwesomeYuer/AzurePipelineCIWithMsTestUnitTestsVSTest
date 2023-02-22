@@ -24,25 +24,18 @@ steps:
       noCache: true
 
 - task: DotNetCoreCLI@2
-  displayName: New Manifest For Tool  
+  displayName: New Manifest For Tool Before Build  
   inputs:
     command: 'custom'
     custom: 'new'
     arguments: 'tool-manifest --force'
 
 - task: DotNetCoreCLI@2
-  displayName: Install Playwright CLI
+  displayName: Install Playwright CLI Before Build
   inputs:
     command: 'custom'
     custom: 'tool'
     arguments: 'install Microsoft.Playwright.CLI'
-
-- task: DotNetCoreCLI@2
-  displayName: Run Playwright Install  
-  inputs:
-    command: 'custom'
-    custom: 'tool'
-    arguments: 'run playwright install'
 
 - task: DotNetCoreCLI@2
   displayName: Build
@@ -51,6 +44,13 @@ steps:
      **/*.csproj
      # !**/*MsTest*.csproj
     arguments: '--configuration $(BuildConfiguration)'
+
+- task: DotNetCoreCLI@2
+  displayName: Run Playwright Install After Build
+  inputs:
+    command: 'custom'
+    custom: 'tool'
+    arguments: 'run playwright install'
 
 - task: DotNetCoreCLI@2
   displayName: Test

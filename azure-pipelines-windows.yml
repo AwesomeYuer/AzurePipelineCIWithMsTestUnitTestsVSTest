@@ -55,14 +55,6 @@ steps:
     custom: 'tool'
     arguments: 'install Microsoft.Playwright.CLI'
 
-- task: DotNetCoreCLI@2
-  displayName: Run Playwright Install  
-  inputs:
-    command: 'custom'
-    custom: 'tool'
-    arguments: 'run playwright install'
-
-
 ## Using Microsoft Fakes in the CI
 ## Microsoft Fakes Assembly Generation
 ## https://learn.microsoft.com/en-us/visualstudio/test/isolating-code-under-test-with-microsoft-fakes?view=vs-2022&tabs=csharp
@@ -82,6 +74,13 @@ steps:
      **/*.csproj
      # !**/*[Tt]ests.csproj
     arguments: '--configuration $(BuildConfiguration)'
+
+- task: DotNetCoreCLI@2
+  displayName: Run Playwright Install  
+  inputs:
+    command: 'custom'
+    custom: 'tool'
+    arguments: 'run playwright install'
 
 # https://stackoverflow.com/questions/57177772/azure-pipelines-where-is-the-codecoverage-generated-by-vstest2
 - task: VSTest@2
