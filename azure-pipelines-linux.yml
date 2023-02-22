@@ -38,19 +38,19 @@ steps:
     arguments: 'install Microsoft.Playwright.CLI'
 
 - task: DotNetCoreCLI@2
+  displayName: Run Playwright Install  
+  inputs:
+    command: 'custom'
+    custom: 'tool'
+    arguments: 'run playwright install'
+
+- task: DotNetCoreCLI@2
   displayName: Build
   inputs:
     projects: |
      **/*.csproj
      # !**/*MsTest*.csproj
     arguments: '--configuration $(BuildConfiguration)'
-
-- task: DotNetCoreCLI@2
-  displayName: Run Playwright Install  
-  inputs:
-    command: 'custom'
-    custom: 'tool'
-    arguments: 'run playwright install'
 
 - task: DotNetCoreCLI@2
   displayName: Test

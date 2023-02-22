@@ -41,6 +41,28 @@ steps:
   inputs:
     restoreSolution: '$(solution)'
 
+- task: DotNetCoreCLI@2
+  displayName: New Manifest For Tool  
+  inputs:
+    command: 'custom'
+    custom: 'new'
+    arguments: 'tool-manifest --force'
+
+- task: DotNetCoreCLI@2
+  displayName: Install Playwright CLI
+  inputs:
+    command: 'custom'
+    custom: 'tool'
+    arguments: 'install Microsoft.Playwright.CLI'
+
+- task: DotNetCoreCLI@2
+  displayName: Run Playwright Install  
+  inputs:
+    command: 'custom'
+    custom: 'tool'
+    arguments: 'run playwright install'
+
+
 ## Using Microsoft Fakes in the CI
 ## Microsoft Fakes Assembly Generation
 ## https://learn.microsoft.com/en-us/visualstudio/test/isolating-code-under-test-with-microsoft-fakes?view=vs-2022&tabs=csharp
