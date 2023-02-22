@@ -48,6 +48,8 @@ namespace ConsoleApp1NUnitTests
         [Test]
         public async Task BaiduSearch_Test()
         {
+            
+
             await Page.GotoAsync("https://www.baidu.com");
 
             await Page.Locator("id=kw").FillAsync(Guid.NewGuid().ToString());
