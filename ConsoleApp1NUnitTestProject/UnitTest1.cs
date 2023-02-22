@@ -49,6 +49,9 @@ namespace ConsoleApp1NUnitTests
         [Test]
         public async Task BaiduSearch_Test()
         {
+
+            Console.WriteLine("ÄãºÃ...");
+
             await Page.GotoAsync("https://www.baidu.com");
 
             var locator = Page.Locator("title");
